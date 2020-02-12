@@ -181,6 +181,203 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" class="post-title-link" itemprop="url">同一台電腦使用 gitlab跟github SSH key</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-02-12 10:16:38 / 修改時間：14:15:08" itemprop="dateCreated datePublished" datetime="2020-02-12T10:16:38+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="安裝git-ssh-key"><a href="#安裝git-ssh-key" class="headerlink" title="安裝git ssh key"></a>安裝git ssh key</h3><p>如果電腦上都沒有 git ssh key</p>
+<p>可以打上 <code>ssh-keygen</code> 同時建立 github 跟 gitlab 的 key，可參照這篇文章<a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#%E5%AF%A6%E4%BD%9C-%E5%90%8C%E4%B8%80%E9%83%A8%E9%9B%BB%E8%85%A6%E7%AE%A1%E7%90%86-Github-%E8%88%87-Gitlab-SSH-keys" target="_blank" rel="noopener">實作 - 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
+<p>因為我PC 已經有一個github ssh key，所以補上gitlab ssh key就行了。<br>輸入 <code>ssh-keygen -t rsa -b 4096 -C &quot;email@example.com&quot;</code></p>
+<p><img src="demo-sshkey1.png" alt="圖檔：產生ssh key畫面"></p>
+<p>第一個是金鑰名稱，不輸入會使用 id_rsa，會覆蓋原本的，所以我打上 test_gitlab<br>2.3 就是密碼了</p>
+<p>再到<code>c:\User\使用者\.ssh</code> 輸入 <code>touch config</code></p>
+<p>confing 內容輸入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># github</span><br><span class="line">Host github.com</span><br><span class="line">        HostName github.com</span><br><span class="line">        PreferredAuthentications publickey</span><br><span class="line">        IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line"># gitlab</span><br><span class="line">Host gitlab.com</span><br><span class="line">        HostName gitlab.com</span><br><span class="line">        PreferredAuthentications publickey</span><br><span class="line">        IdentityFile ~&#x2F;.ssh&#x2F;test_gitlab</span><br></pre></td></tr></table></figure>
+<p>接下來就是將 github 及 gitlab 的key，貼到各自的ssh key裡面</p>
+<p>將 id_rsa.pub 的內容 貼到 github key</p>
+<p><img src="github-sshkey1.png" alt="圖檔：github sshkey畫面"></p>
+<p>將 test_gitlab.pub 的內容 貼到 gitlab key</p>
+<p><img src="gitlab-sshkey1.png" alt="圖檔：gitlab sshkey畫面"></p>
+<p>ssh key 標題自己定義。</p>
+<p> 測試 github 跟 gitlab 有無成功。</p>
+<p> <code>ssh -T git@github.com</code></p>
+<p><img src="demo-sshkey2.png" alt="圖檔：github success畫面"></p>
+<p> <code>ssh -T git@gitlab.com</code><br><img src="demo-sshkey3.png" alt="圖檔：gitlab success畫面"></p>
+<h3 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h3><p><a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#2-%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88" target="_blank" rel="noopener">Kenny&#39;s Blog 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/" class="post-title-link" itemprop="url">將hexo移到gitlab</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-02-12 10:02:27 / 修改時間：13:56:29" itemprop="dateCreated datePublished" datetime="2020-02-12T10:02:27+08:00">2020-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 <a href="https://blog.typeart.cc/%e7%82%ba%e4%bb%80%e9%ba%bc%e6%88%91%e6%8e%a8%e8%96%a6hexo%e9%83%a8%e7%bd%b2%e5%88%b0Gitlab/" target="_blank" rel="noopener">為什麼我推薦hexo部署到Gitlab </a></p>
+<p>以下是他說主要<br>主要差異：</p>
+<ol>
+<li><p>gitlab對於自定域名仍可使用https<br>　　<code>因為還沒有個人域名，無法測試。</code></p>
+</li>
+<li><p>gitlab有ci可以自動化，不必再下<code>hexo g</code>、<code>hexo d</code>，只要push新文章，後面一切自動化<br>　　<code>個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit 可以寫上註解</code></p>
+</li>
+<li><p>介面比github精緻</p>
+</li>
+<li><p>一個repo(在Gitlab上叫project)，同時呈現page及存放blog原始結構<br><code>在 github 哪邊只會上傳 public 的內容</code></p>
+</li>
+<li><p>提供的容量、流量都比github大</p>
+</li>
+<li><p>不想公開BLOG原始結構的話，可以設定成私人(免費)</p>
+</li>
+<li><p>gitlab的後台提供web IDE，可以做到雲端寫作<br><code>還沒安裝web ide ，暫時無法測試。</code></p>
+</li>
+</ol>
+<p>看完之後，也想嘗試在 gitlab上面發佈。</p>
+<h3 id="安裝gitlab-ssh-key"><a href="#安裝gitlab-ssh-key" class="headerlink" title="安裝gitlab ssh key"></a>安裝gitlab ssh key</h3><a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" title="[站內文章：同一台電腦使用 gitlab跟github SSH key]">[站內文章：同一台電腦使用 gitlab跟github SSH key]</a>
+
+<p>我是參考這篇文章 <a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#2-%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88" target="_blank" rel="noopener">Kenny&#39;s Blog 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
+<h3 id="建立-hexo"><a href="#建立-hexo" class="headerlink" title="建立 hexo"></a>建立 hexo</h3><p>步驟 請參閱 文章1.hexo建立</p>
+<p>這邊是差異性，<br>設定<code>.gitignore</code>，應該一開始就有這個檔案，不太需要設定。</p>
+<p>如果沒有先在跟目錄底下建立 <code>.gitignore</code><br>輸入以下內容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules&#x2F;</span><br><span class="line">public&#x2F;</span><br><span class="line">.deploy*&#x2F;</span><br></pre></td></tr></table></figure>
+<h3 id="設定-gitlab-ci-yml"><a href="#設定-gitlab-ci-yml" class="headerlink" title="設定.gitlab-ci.yml"></a>設定.gitlab-ci.yml</h3><p><a href="https://hexo.io/zh-tw/docs/gitlab-pages" target="_blank" rel="noopener">官方文件</a></p>
+<p><a href="https://gitlab.com/pages/hexo/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">官方gitlab範本</a> </p>
+<figure class="highlight plain"><figcaption><span>.gitlab-ci.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">image: node:10-alpine # use nodejs v10 LTS</span><br><span class="line">cache:</span><br><span class="line">  paths:</span><br><span class="line">    - node_modules&#x2F;</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line">  - npm install</span><br><span class="line"></span><br><span class="line">pages:</span><br><span class="line">  script:</span><br><span class="line">    - hexo clean        # 這個是我自己加上去的</span><br><span class="line">    - hexo generate</span><br><span class="line">  artifacts:</span><br><span class="line">    paths:</span><br><span class="line">      - public</span><br><span class="line">  only:</span><br><span class="line">    - master</span><br></pre></td></tr></table></figure>
+
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><p>記得到 <code>_config</code> 將  repo 改成 repository: <a href="mailto:git@gitlab.com">git@gitlab.com</a>:帳號/帳號.gitlab.io.git</p>
+<p>接下來就可以push 到gitlab上</p>
+<h3 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h3><ul>
+<li><p><a href="https://blog.typeart.cc/%e7%82%ba%e4%bb%80%e9%ba%bc%e6%88%91%e6%8e%a8%e8%96%a6hexo%e9%83%a8%e7%bd%b2%e5%88%b0Gitlab/" target="_blank" rel="noopener">為什麼我推薦hexo部署到Gitlab </a></p>
+</li>
+<li><p><a href="https://blog.typeart.cc/%E9%83%A8%E7%BD%B2HEXO%E5%88%B0GitLab%20Page/" target="_blank" rel="noopener">部署HEXO到GitLab Page </a></p>
+</li>
+<li><p><a href="https://hexo.io/zh-tw/docs/gitlab-pages" target="_blank" rel="noopener">hexo</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -204,10 +401,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-02-11 09:21:27 / 修改時間：15:17:37" itemprop="dateCreated datePublished" datetime="2020-02-11T09:21:27+08:00">2020-02-11</time>
+              <time title="創建時間：2020-02-11 09:21:27" itemprop="dateCreated datePublished" datetime="2020-02-11T09:21:27+08:00">2020-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-02-12 14:14:01" itemprop="dateModified" datetime="2020-02-12T14:14:01+08:00">2020-02-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -459,11 +662,16 @@
 <td>如果使用markdown 本身的語，在首頁會無法呈現，如要呈現，需使用hexo標籤外掛語法</td>
 <td>hexo</td>
 </tr>
+<tr>
+<td><code></code></td>
+<td>引用站內文章</td>
+<td>hexo</td>
+</tr>
 </tbody></table>
 <p>ex:</p>
-<pre><code>{% asset_path slug %}``
-{% asset_img slug [title] %}``
-{% asset_link slug [title] %}``</code></pre><h4 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h4><p><a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">hexo 官網</a></p>
+<pre><code>{% asset_path slug %}
+{% asset_img slug [title] %}
+{% asset_link slug [title] %}</code></pre><h4 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h4><p><a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">hexo 官網</a></p>
 
       
     </div>
@@ -649,20 +857,20 @@ $ hexo g               # hexo generate 縮寫，產生檔案</code></pre><h4 id=
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
