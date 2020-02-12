@@ -46,12 +46,12 @@
   };
 </script>
 
-  <meta name="description" content="安裝git ssh key如果電腦上都沒有 git ssh key 可以打上 ssh-keygen 同時建立 github 跟 gitlab 的 key，可參照這篇文章實作 - 同一部電腦管理 Github 與 Gitlab SSH keys 因為我PC 已經有一個github ssh key，所以補上gitlab ssh key就行了。輸入 ssh-keygen -t rsa -b 4096 -">
+  <meta name="description" content="安裝git ssh key如果電腦上都沒有 git ssh key 可以打上 ssh-keygen 同時建立 github 跟 gitlab 的 key，可參照這篇文章實作 - 同一部電腦管理 Github 與 Gitlab SSH keys">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同一台電腦使用 gitlab跟github SSH key">
 <meta property="og:url" content="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="安裝git ssh key如果電腦上都沒有 git ssh key 可以打上 ssh-keygen 同時建立 github 跟 gitlab 的 key，可參照這篇文章實作 - 同一部電腦管理 Github 與 Gitlab SSH keys 因為我PC 已經有一個github ssh key，所以補上gitlab ssh key就行了。輸入 ssh-keygen -t rsa -b 4096 -">
+<meta property="og:description" content="安裝git ssh key如果電腦上都沒有 git ssh key 可以打上 ssh-keygen 同時建立 github 跟 gitlab 的 key，可參照這篇文章實作 - 同一部電腦管理 Github 與 Gitlab SSH keys">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/demo-sshkey1.png">
 <meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/github-sshkey1.png">
@@ -59,7 +59,7 @@
 <meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/demo-sshkey2.png">
 <meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/demo-sshkey3.png">
 <meta property="article:published_time" content="2020-02-12T02:16:38.000Z">
-<meta property="article:modified_time" content="2020-02-12T06:15:08.149Z">
+<meta property="article:modified_time" content="2020-02-12T08:46:38.717Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="gitlab">
 <meta property="article:tag" content="github">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-02-12 10:16:38 / 修改時間：14:15:08" itemprop="dateCreated datePublished" datetime="2020-02-12T10:16:38+08:00">2020-02-12</time>
+              <time title="創建時間：2020-02-12 10:16:38 / 修改時間：16:46:38" itemprop="dateCreated datePublished" datetime="2020-02-12T10:16:38+08:00">2020-02-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,6 +245,8 @@
       
         <h3 id="安裝git-ssh-key"><a href="#安裝git-ssh-key" class="headerlink" title="安裝git ssh key"></a>安裝git ssh key</h3><p>如果電腦上都沒有 git ssh key</p>
 <p>可以打上 <code>ssh-keygen</code> 同時建立 github 跟 gitlab 的 key，可參照這篇文章<a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#%E5%AF%A6%E4%BD%9C-%E5%90%8C%E4%B8%80%E9%83%A8%E9%9B%BB%E8%85%A6%E7%AE%A1%E7%90%86-Github-%E8%88%87-Gitlab-SSH-keys" target="_blank" rel="noopener">實作 - 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
+<a id="more"></a>
+
 <p>因為我PC 已經有一個github ssh key，所以補上gitlab ssh key就行了。<br>輸入 <code>ssh-keygen -t rsa -b 4096 -C &quot;email@example.com&quot;</code></p>
 <p><img src="demo-sshkey1.png" alt="圖檔：產生ssh key畫面"></p>
 <p>第一個是金鑰名稱，不輸入會使用 id_rsa，會覆蓋原本的，所以我打上 test_gitlab<br>2.3 就是密碼了</p>
