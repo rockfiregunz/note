@@ -46,21 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 為什麼我推薦hexo部署到Gitlab  以下是他說主要主要差異：  gitlab對於自定域名仍可使用https因為還沒有個人域名，無法測試。  gitlab有ci可以自動化，不必再下hexo g、hexo d，只要push新文章，後面一切自動化個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit">
+  <meta name="description" content="self和 $this 的差異 self是參照到目前的class，$this是參照到目前的object ( 已經被宣告的實體上 )  self 可使用在static上，$this不行  static method 因為沒有物件的實體，所以需要注意不可以使用 $this ，要用self:: 可以直接存取 static method ( 如self::method() )，但是無法直接存取 stati">
 <meta property="og:type" content="article">
-<meta property="og:title" content="將hexo移到gitlab">
-<meta property="og:url" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/index.html">
+<meta property="og:title" content="[PHP] self和$this的差異">
+<meta property="og:url" content="https://rockfiregunz.github.io/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 為什麼我推薦hexo部署到Gitlab  以下是他說主要主要差異：  gitlab對於自定域名仍可使用https因為還沒有個人域名，無法測試。  gitlab有ci可以自動化，不必再下hexo g、hexo d，只要push新文章，後面一切自動化個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit">
+<meta property="og:description" content="self和 $this 的差異 self是參照到目前的class，$this是參照到目前的object ( 已經被宣告的實體上 )  self 可使用在static上，$this不行  static method 因為沒有物件的實體，所以需要注意不可以使用 $this ，要用self:: 可以直接存取 static method ( 如self::method() )，但是無法直接存取 stati">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-02-12T02:02:27.000Z">
-<meta property="article:modified_time" content="2020-02-13T09:12:16.180Z">
+<meta property="article:published_time" content="2020-02-17T06:43:59.000Z">
+<meta property="article:modified_time" content="2020-02-17T07:10:03.199Z">
 <meta property="article:author" content="jimmy">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="前端">
+<meta property="article:tag" content="class">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
+<link rel="canonical" href="https://rockfiregunz.github.io/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
 
 
 <script id="page-configurations">
@@ -72,7 +71,7 @@
   };
 </script>
 
-  <title>將hexo移到gitlab | jimmy's note</title>
+  <title>[PHP] self和$this的差異 | jimmy's note</title>
   
 
 
@@ -187,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -200,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          將hexo移到gitlab
+          [PHP] self和$this的差異
         </h1>
 
         <div class="post-meta">
@@ -209,24 +208,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-02-12 10:02:27" itemprop="dateCreated datePublished" datetime="2020-02-12T10:02:27+08:00">2020-02-12</time>
+              <time title="創建時間：2020-02-17 14:43:59 / 修改時間：15:10:03" itemprop="dateCreated datePublished" datetime="2020-02-17T14:43:59+08:00">2020-02-17</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-02-13 17:12:16" itemprop="dateModified" datetime="2020-02-13T17:12:16+08:00">2020-02-13</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
                   </a>
                 </span>
             </span>
@@ -242,48 +235,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 <a href="https://blog.typeart.cc/%e7%82%ba%e4%bb%80%e9%ba%bc%e6%88%91%e6%8e%a8%e8%96%a6hexo%e9%83%a8%e7%bd%b2%e5%88%b0Gitlab/" target="_blank" rel="noopener">為什麼我推薦hexo部署到Gitlab </a></p>
-<p>以下是他說主要<br>主要差異：</p>
+        <h3 id="self和-this-的差異"><a href="#self和-this-的差異" class="headerlink" title="self和 $this 的差異"></a>self和 $this 的差異</h3><ol>
+<li><p>self是參照到目前的class，$this是參照到目前的object ( 已經被宣告的實體上 )</p>
+</li>
+<li><p>self 可使用在static上，$this不行</p>
 <ol>
-<li><p>gitlab對於自定域名仍可使用https<br><code>因為還沒有個人域名，無法測試。</code></p>
+<li>static method 因為沒有物件的實體，所以需要注意不可以使用 $this ，要用self::</li>
+<li>可以直接存取 static method ( 如self::method() )，但是無法直接存取 static property 中的預先宣告的值</li>
+</ol>
 </li>
-<li><p>gitlab有ci可以自動化，不必再下<code>hexo g</code>、<code>hexo d</code>，只要push新文章，後面一切自動化<br><code>個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit 可以寫上註解</code></p>
-</li>
-<li><p>介面比github精緻</p>
-</li>
-<li><p>一個repo(在Gitlab上叫project)，同時呈現page及存放blog原始結構<br><code>在 github 哪邊只會上傳 public 的內容</code></p>
-</li>
-<li><p>提供的容量、流量都比github大</p>
-</li>
-<li><p>不想公開BLOG原始結構的話，可以設定成私人(免費)</p>
-</li>
-<li><p>gitlab的後台提供web IDE，可以做到雲端寫作<br><code>還沒安裝web ide ，暫時無法測試。</code></p>
+<li><p>可用 new self() 呼叫自己</p>
 </li>
 </ol>
-<p>看完之後，也想嘗試在 gitlab上面發佈。</p>
-<a id="more"></a>
-<h3 id="安裝gitlab-ssh-key"><a href="#安裝gitlab-ssh-key" class="headerlink" title="安裝gitlab ssh key"></a>安裝gitlab ssh key</h3><p>
-<a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" title="站內文章：同一台電腦使用 gitlab跟github SSH key">站內文章：同一台電腦使用 gitlab跟github SSH key</a></p>
+<h3 id="example"><a href="#example" class="headerlink" title="example"></a>example</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">name</span></span></span><br><span class="line"><span class="class">	</span>&#123;		</span><br><span class="line">		<span class="keyword">public</span> $name;		</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getname</span><span class="params">()</span></span>&#123;		<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name = <span class="string">"mick"</span>;&#125;</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getnamebythis</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getname();	&#125;</span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getnamebyself</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">self</span>::getname();		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">name2</span> <span class="keyword">extends</span> <span class="title">name</span></span></span><br><span class="line"><span class="class">	</span>&#123;	 </span><br><span class="line">		<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getname</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name = <span class="string">"jeff"</span>;&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	$newname = <span class="keyword">new</span> name2();</span><br><span class="line">	<span class="keyword">echo</span> $newname-&gt;getnamebythis() . <span class="string">"&lt;br/&gt;"</span>; <span class="comment">// 出現的是jeff</span></span><br><span class="line">	<span class="keyword">echo</span> $newname-&gt;getnamebyself() . <span class="string">"&lt;br/&gt;"</span>; <span class="comment">// 出現的是mick</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>我是參考這篇文章 <a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#2-%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88" target="_blank" rel="noopener">Kenny&#39;s Blog 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
-<h3 id="建立-hexo"><a href="#建立-hexo" class="headerlink" title="建立 hexo"></a>建立 hexo</h3><p>步驟 請參閱 文章1.hexo建立</p>
-<p>這邊是差異性，<br>設定<code>.gitignore</code>，應該一開始就有這個檔案，不太需要設定。</p>
-<p>如果沒有先在跟目錄底下建立 <code>.gitignore</code><br>輸入以下內容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules&#x2F;</span><br><span class="line">public&#x2F;</span><br><span class="line">.deploy*&#x2F;</span><br></pre></td></tr></table></figure>
-<h3 id="設定-gitlab-ci-yml"><a href="#設定-gitlab-ci-yml" class="headerlink" title="設定.gitlab-ci.yml"></a>設定.gitlab-ci.yml</h3><p><a href="https://hexo.io/zh-tw/docs/gitlab-pages" target="_blank" rel="noopener">官方文件</a></p>
-<p><a href="https://gitlab.com/pages/hexo/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">官方gitlab範本</a> </p>
-<figure class="highlight plain"><figcaption><span>.gitlab-ci.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">image: node:10-alpine # use nodejs v10 LTS</span><br><span class="line">cache:</span><br><span class="line">  paths:</span><br><span class="line">    - node_modules&#x2F;</span><br><span class="line"></span><br><span class="line">before_script:</span><br><span class="line">  - npm install hexo-cli -g</span><br><span class="line">  - npm install</span><br><span class="line"></span><br><span class="line">pages:</span><br><span class="line">  script:</span><br><span class="line">    - hexo clean        # 這個是我自己加上去的</span><br><span class="line">    - hexo generate</span><br><span class="line">  artifacts:</span><br><span class="line">    paths:</span><br><span class="line">      - public</span><br><span class="line">  only:</span><br><span class="line">    - master</span><br></pre></td></tr></table></figure>
 
-<h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改 _config.yml"></a>修改 _config.yml</h3><p>記得到 <code>_config</code> 將  repo 改成 repository: <a href="mailto:git@gitlab.com">git@gitlab.com</a>:帳號/帳號.gitlab.io.git</p>
-<p>接下來就可以push 到gitlab上</p>
-<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
-<li><p><a href="https://blog.typeart.cc/%e7%82%ba%e4%bb%80%e9%ba%bc%e6%88%91%e6%8e%a8%e8%96%a6hexo%e9%83%a8%e7%bd%b2%e5%88%b0Gitlab/" target="_blank" rel="noopener">為什麼我推薦hexo部署到Gitlab </a></p>
-</li>
-<li><p><a href="https://blog.typeart.cc/%E9%83%A8%E7%BD%B2HEXO%E5%88%B0GitLab%20Page/" target="_blank" rel="noopener">部署HEXO到GitLab Page </a></p>
-</li>
-<li><p><a href="https://hexo.io/zh-tw/docs/gitlab-pages" target="_blank" rel="noopener">hexo</a></p>
-</li>
-</ul>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://miggo.pixnet.net/blog/post/30799978" target="_blank" rel="noopener">麥克的學習紀錄</a></p>
 
     </div>
 
@@ -293,8 +261,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/class/" rel="tag"># class</a>
           </div>
 
         
@@ -303,12 +270,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/" rel="prev" title="2-hexo 設定及指令">
-      <i class="fa fa-chevron-left"></i> 2-hexo 設定及指令
+    <a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="prev" title="同一台電腦使用 gitlab跟github SSH key">
+      <i class="fa fa-chevron-left"></i> 同一台電腦使用 gitlab跟github SSH key
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="next" title="同一台電腦使用 gitlab跟github SSH key">
-      同一台電腦使用 gitlab跟github SSH key <i class="fa fa-chevron-right"></i>
+    <a href="/2020/02/17/MSSQL-CTE-TO-JSON/" rel="next" title="[MSSQL] CTE TO JSON">
+      [MSSQL] CTE TO JSON <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -369,7 +336,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝gitlab-ssh-key"><span class="nav-number">1.</span> <span class="nav-text">安裝gitlab ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-hexo"><span class="nav-number">2.</span> <span class="nav-text">建立 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定-gitlab-ci-yml"><span class="nav-number">3.</span> <span class="nav-text">設定.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-config-yml"><span class="nav-number">4.</span> <span class="nav-text">修改 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#self和-this-的差異"><span class="nav-number">1.</span> <span class="nav-text">self和 $this 的差異</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#example"><span class="nav-number">2.</span> <span class="nav-text">example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
