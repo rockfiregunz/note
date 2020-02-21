@@ -53,12 +53,15 @@
 <meta property="og:site_name" content="jimmy&#39;s note">
 <meta property="og:description" content="原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 為什麼我推薦hexo部署到Gitlab  以下是他說主要主要差異：  gitlab對於自定域名仍可使用https因為還沒有個人域名，無法測試。  gitlab有ci可以自動化，不必再下hexo g、hexo d，只要push新文章，後面一切自動化個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/2.png">
 <meta property="article:published_time" content="2020-02-12T02:02:27.000Z">
-<meta property="article:modified_time" content="2020-02-13T09:12:16.180Z">
+<meta property="article:modified_time" content="2020-02-21T02:51:08.599Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
 
 <link rel="canonical" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
 
@@ -217,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-02-13 17:12:16" itemprop="dateModified" datetime="2020-02-13T17:12:16+08:00">2020-02-13</time>
+                <time title="修改時間：2020-02-21 10:51:08" itemprop="dateModified" datetime="2020-02-21T10:51:08+08:00">2020-02-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,6 +279,11 @@
 
 <h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改 _config.yml"></a>修改 _config.yml</h3><p>記得到 <code>_config</code> 將  repo 改成 repository: <a href="mailto:git@gitlab.com">git@gitlab.com</a>:帳號/帳號.gitlab.io.git</p>
 <p>接下來就可以push 到gitlab上</p>
+<h3 id="權限問題"><a href="#權限問題" class="headerlink" title="權限問題"></a>權限問題</h3><p>當你發佈到gitlab之後，如果沒有限定page權限，就必須要登入才能查看。</p>
+<p>到 Project  -&gt; setting-&gt;General 將Visibility, project features, permissions 展開，往下拉找到 Page 這個選項</p>
+<p>將 only Project Member(只有專案成員) 改成 Everyone(每個人)。<br>儲存之後，請過幾分鐘再去查看。</p>
+<p><img src="1.png" alt=""></p>
+<p><img src="2.png" alt=""></p>
 <h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><ul>
 <li><p><a href="https://blog.typeart.cc/%e7%82%ba%e4%bb%80%e9%ba%bc%e6%88%91%e6%8e%a8%e8%96%a6hexo%e9%83%a8%e7%bd%b2%e5%88%b0Gitlab/" target="_blank" rel="noopener">為什麼我推薦hexo部署到Gitlab </a></p>
 </li>
@@ -369,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝gitlab-ssh-key"><span class="nav-number">1.</span> <span class="nav-text">安裝gitlab ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-hexo"><span class="nav-number">2.</span> <span class="nav-text">建立 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定-gitlab-ci-yml"><span class="nav-number">3.</span> <span class="nav-text">設定.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-config-yml"><span class="nav-number">4.</span> <span class="nav-text">修改 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝gitlab-ssh-key"><span class="nav-number">1.</span> <span class="nav-text">安裝gitlab ssh key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-hexo"><span class="nav-number">2.</span> <span class="nav-text">建立 hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定-gitlab-ci-yml"><span class="nav-number">3.</span> <span class="nav-text">設定.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-config-yml"><span class="nav-number">4.</span> <span class="nav-text">修改 _config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#權限問題"><span class="nav-number">5.</span> <span class="nav-text">權限問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -396,7 +404,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
