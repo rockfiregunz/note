@@ -46,27 +46,23 @@
   };
 </script>
 
-  <meta name="description" content="前言因為工作的關係，現在多使用 PHP+MSSQL 來開發網站，但前一份工作卻是用 Visual Studio 2015 來開發web網站，現在有 visual studio code出現，開始重新學習 c# 。目前還是以我擅長的 web網站 及 挑戰 MVC的方尚，至於WPF就等之後吧。">
+  <meta name="description" content="目前只能專注在一方面，所以先用 MVC來開發。 不太想下指令去安裝 vue，，想直接抓js檔下來使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vscode學習之路-建立新專案(MVC&#x2F;WEB)">
-<meta property="og:url" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/index.html">
+<meta property="og:title" content="vscode 學習之路-MVC加入Vue">
+<meta property="og:url" content="https://rockfiregunz.github.io/2020/02/24/Day2-vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="前言因為工作的關係，現在多使用 PHP+MSSQL 來開發網站，但前一份工作卻是用 Visual Studio 2015 來開發web網站，現在有 visual studio code出現，開始重新學習 c# 。目前還是以我擅長的 web網站 及 挑戰 MVC的方尚，至於WPF就等之後吧。">
+<meta property="og:description" content="目前只能專注在一方面，所以先用 MVC來開發。 不太想下指令去安裝 vue，，想直接抓js檔下來使用。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodemvc-1.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodemvc-2.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodemvc-3.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodeweb-1.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodeweb-2.png">
-<meta property="article:published_time" content="2020-02-21T09:30:12.000Z">
-<meta property="article:modified_time" content="2020-02-25T01:34:58.352Z">
+<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/24/Day2-vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/day2-1.png">
+<meta property="article:published_time" content="2020-02-24T09:12:57.000Z">
+<meta property="article:modified_time" content="2020-02-25T01:38:44.635Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="vsocde">
-<meta property="article:tag" content="c#">
+<meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/vscodemvc-1.png">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/2020/02/24/Day2-vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/day2-1.png">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/">
+<link rel="canonical" href="https://rockfiregunz.github.io/2020/02/24/Day2-vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/">
 
 
 <script id="page-configurations">
@@ -78,7 +74,7 @@
   };
 </script>
 
-  <title>vscode學習之路-建立新專案(MVC/WEB) | jimmy's note</title>
+  <title>vscode 學習之路-MVC加入Vue | jimmy's note</title>
   
 
 
@@ -193,7 +189,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/21/Day1-vscode%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/24/Day2-vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,7 +202,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vscode學習之路-建立新專案(MVC/WEB)
+          vscode 學習之路-MVC加入Vue
         </h1>
 
         <div class="post-meta">
@@ -216,14 +212,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-02-21 17:30:12" itemprop="dateCreated datePublished" datetime="2020-02-21T17:30:12+08:00">2020-02-21</time>
+              <time title="創建時間：2020-02-24 17:12:57" itemprop="dateCreated datePublished" datetime="2020-02-24T17:12:57+08:00">2020-02-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-02-25 09:34:58" itemprop="dateModified" datetime="2020-02-25T09:34:58+08:00">2020-02-25</time>
+                <time title="修改時間：2020-02-25 09:38:44" itemprop="dateModified" datetime="2020-02-25T09:38:44+08:00">2020-02-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,22 +244,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因為工作的關係，現在多使用 PHP+MSSQL 來開發網站，但前一份工作卻是用 Visual Studio 2015 來開發web網站，<br>現在有 visual studio code出現，開始重新學習 c# 。<br>目前還是以我擅長的 web網站 及 挑戰 MVC的方尚，至於WPF就等之後吧。</p>
+        <p>目前只能專注在一方面，所以先用 MVC來開發。</p>
+<p>不太想下指令去安裝 vue，，想直接抓js檔下來使用。</p>
 <a id="more"></a>
+<p>先到 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue官網</a> 下載 js擋下來，放到 wwwroot的lib裡面</p>
+<p>自己建立 vue資料夾 來區分各套件</p>
+<p><img src="day2-1.png" alt=""></p>
+<h4 id="修改-layout-cshtml"><a href="#修改-layout-cshtml" class="headerlink" title="修改 _layout.cshtml"></a>修改 _layout.cshtml</h4><p>找到引用 js 的地方 加上</p>
+<p> <code>&lt;script src=&quot;~/lib/vue/vue.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">environment</span> <span class="attr">include</span>=<span class="string">"Development"</span>&gt;</span></span><br><span class="line">      ... 略</span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/lib/vue/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environment</span> <span class="attr">exclude</span>=<span class="string">"Development"</span>&gt;</span></span><br><span class="line">      ... 略        </span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/lib/vue/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><a href="https://ithelp.ithome.com.tw/articles/10202159" target="_blank" rel="noopener">.Net Core 網站開發 101</a> ，這個文章應該是我目前主要參考的文章。</p>
-<p>我自己建立一個 asp 資料夾來存放我的專案。</p>
-<p>開啟vscode ，然後再打開asp資料夾。</p>
-<h3 id="建立-MVC-專案"><a href="#建立-MVC-專案" class="headerlink" title="建立 MVC 專案"></a>建立 MVC 專案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 建立 vscodemvc 專案</span><br><span class="line">dotnet new mve -o vscodemvc </span><br><span class="line"></span><br><span class="line">// 到 vscodemvc 專案 </span><br><span class="line">cd vscodemvc</span><br><span class="line"></span><br><span class="line">// 執行 vscodemvc 專案</span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
-<p>shell 畫面<br><img src="vscodemvc-1.png" alt=""><br><img src="vscodemvc-2.png" alt=""></p>
-<p>然後 <a href="https://localhost:5001/" target="_blank" rel="noopener">https://localhost:5001/</a> 就會發現網站開始執行了。<br>網站畫面<br><img src="vscodemvc-3.png" alt=""></p>
-<h3 id="建立-WEB-專案"><a href="#建立-WEB-專案" class="headerlink" title="建立 WEB 專案"></a>建立 WEB 專案</h3><p>我下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//  建立 vscodeweb 資料夾</span><br><span class="line">mkdir vscodeweb</span><br><span class="line"></span><br><span class="line">//  移動 vscodeweb 資料夾</span><br><span class="line">cd vscodeweb</span><br><span class="line"></span><br><span class="line">// 建立 vscodeweb 專案</span><br><span class="line">dotnet new web</span><br><span class="line"></span><br><span class="line">// 執行 vscodeweb 專案</span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
 
-<p>web專案畫面會出現 Hello World文字。</p>
-<p>shell 畫面<br><img src="vscodeweb-1.png" alt=""></p>
-<p>然後 <a href="https://localhost:5001/" target="_blank" rel="noopener">https://localhost:5001/</a> 就會發現網站開始執行了。<br>網站畫面<br><img src="vscodeweb-2.png" alt=""></p>
+<h4 id="Controller-底下建立-VueController-cs"><a href="#Controller-底下建立-VueController-cs" class="headerlink" title="Controller 底下建立 VueController.cs"></a>Controller 底下建立 VueController.cs</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Mvc;</span><br><span class="line"><span class="keyword">using</span> vscodemvc.Models;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">vscodemvc.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">VueController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> View();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Views-底下建立Vue資料夾及Index-cshtml檔案"><a href="#Views-底下建立Vue資料夾及Index-cshtml檔案" class="headerlink" title="Views 底下建立Vue資料夾及Index.cshtml檔案"></a>Views 底下建立Vue資料夾及Index.cshtml檔案</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@&#123;</span><br><span class="line">    ViewData["Title"] = "Learn Vue";</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>利用 Vue 來顯示訊息<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@section Scripts </span><br><span class="line">&#123;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">'text/javascript'</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(</span></span><br><span class="line">        &#123;</span><br><span class="line"><span class="actionscript">            el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="actionscript">            data: &#123;message: <span class="string">'Hello Vue!'</span>&#125;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://ithelp.ithome.com.tw/articles/10202159" target="_blank" rel="noopener">.Net Core 網站開發 101</a></p>
+<p><a href="https://vuejs.org/v2/guide/" target="_blank" rel="noopener">Vue</a></p>
 
     </div>
 
@@ -274,7 +270,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/vsocde/" rel="tag"># vsocde</a>
-              <a href="/tags/c/" rel="tag"># c#</a>
+              <a href="/tags/vue/" rel="tag"># vue</a>
           </div>
 
         
@@ -283,13 +279,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/17/MSSQL-CTE%E9%81%9E%E8%BF%B4/" rel="prev" title="[MSSQL] CTE遞迴">
-      <i class="fa fa-chevron-left"></i> [MSSQL] CTE遞迴
+    <a href="/2020/02/21/vscode-dotnet%E6%8C%87%E4%BB%A4/" rel="prev" title="vscode dotnet指令">
+      <i class="fa fa-chevron-left"></i> vscode dotnet指令
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/21/vscode-dotnet%E6%8C%87%E4%BB%A4/" rel="next" title="vscode dotnet指令">
-      vscode dotnet指令 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -349,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-MVC-專案"><span class="nav-number">2.</span> <span class="nav-text">建立 MVC 專案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立-WEB-專案"><span class="nav-number">3.</span> <span class="nav-text">建立 WEB 專案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-layout-cshtml"><span class="nav-number">1.</span> <span class="nav-text">修改 _layout.cshtml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Controller-底下建立-VueController-cs"><span class="nav-number">2.</span> <span class="nav-text">Controller 底下建立 VueController.cs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Views-底下建立Vue資料夾及Index-cshtml檔案"><span class="nav-number">3.</span> <span class="nav-text">Views 底下建立Vue資料夾及Index.cshtml檔案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number"></span> <span class="nav-text">參考資料</span></a></div>
       </div>
       <!--/noindex-->
 
