@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/aa/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/aa/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/aa/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/aa/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/codenote/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/codenote/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/codenote/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/codenote/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/aa/css/main.css">
+<link rel="stylesheet" href="/codenote/css/main.css">
 
 
-<link rel="stylesheet" href="/aa/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/codenote/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://rockfiregunz.github.io/aa').hostname,
-    root: '/aa/',
+    hostname: new URL('https://rockfiregunz.github.io/codenote').hostname,
+    root: '/codenote/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -49,23 +49,23 @@
   <meta name="description" content="我自己的開發環境是用 sql server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vscode 學習之路-連接MSSQL">
-<meta property="og:url" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/index.html">
+<meta property="og:url" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
 <meta property="og:description" content="我自己的開發環境是用 sql server">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/1.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/2.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/3.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/4.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/1.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/2.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/3.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/4.png">
 <meta property="article:published_time" content="2020-03-04T07:05:52.000Z">
 <meta property="article:modified_time" content="2020-03-06T09:06:19.009Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="vsocde">
 <meta property="article:tag" content="c sharp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/1.png">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/1.png">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/">
+<link rel="canonical" href="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/">
 
 
 <script id="page-configurations">
@@ -119,7 +119,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/aa/" class="brand" rel="start">
+      <a href="/codenote/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">jimmy's note</span>
         <span class="logo-line-after"><i></i></span>
@@ -143,27 +143,27 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/aa/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+    <a href="/codenote/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/aa/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+    <a href="/codenote/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/aa/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+    <a href="/codenote/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/aa/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+    <a href="/codenote/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/aa/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+    <a href="/codenote/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
   </ul>
@@ -192,10 +192,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/aa/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/codenote/2020/03/04/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E9%80%A3%E6%8E%A5MSSQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/aa/images/avatar.gif">
+      <meta itemprop="image" content="/codenote/images/avatar.gif">
       <meta itemprop="name" content="jimmy">
       <meta itemprop="description" content="">
     </span>
@@ -223,7 +223,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/aa/categories/vscode/" itemprop="url" rel="index">
+                  <a href="/codenote/categories/vscode/" itemprop="url" rel="index">
                     <span itemprop="name">vscode</span>
                   </a>
                 </span>
@@ -291,8 +291,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/aa/tags/vsocde/" rel="tag"># vsocde</a>
-              <a href="/aa/tags/c-sharp/" rel="tag"># c sharp</a>
+              <a href="/codenote/tags/vsocde/" rel="tag"># vsocde</a>
+              <a href="/codenote/tags/c-sharp/" rel="tag"># c sharp</a>
           </div>
 
         
@@ -301,11 +301,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/aa/2020/02/24/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/" rel="prev" title="vscode 學習之路-MVC加入Vue">
+    <a href="/codenote/2020/02/24/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/" rel="prev" title="vscode 學習之路-MVC加入Vue">
       <i class="fa fa-chevron-left"></i> vscode 學習之路-MVC加入Vue
     </a></div>
       <div class="post-nav-item">
-    <a href="/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" rel="next" title="Vue 實例的生命週期">
+    <a href="/codenote/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/" rel="next" title="Vue 實例的生命週期">
       Vue 實例的生命週期 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -379,20 +379,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/aa/archives/">
+          <a href="/codenote/archives/">
         
           <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/aa/categories/">
+            <a href="/codenote/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/aa/tags/">
+            <a href="/codenote/tags/">
           
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -445,19 +445,19 @@
   </div>
 
   
-  <script src="/aa/lib/anime.min.js"></script>
-  <script src="/aa/lib/velocity/velocity.min.js"></script>
-  <script src="/aa/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/codenote/lib/anime.min.js"></script>
+  <script src="/codenote/lib/velocity/velocity.min.js"></script>
+  <script src="/codenote/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/aa/js/utils.js"></script>
+<script src="/codenote/js/utils.js"></script>
 
-<script src="/aa/js/motion.js"></script>
-
-
-<script src="/aa/js/schemes/pisces.js"></script>
+<script src="/codenote/js/motion.js"></script>
 
 
-<script src="/aa/js/next-boot.js"></script>
+<script src="/codenote/js/schemes/pisces.js"></script>
+
+
+<script src="/codenote/js/next-boot.js"></script>
 
 
 

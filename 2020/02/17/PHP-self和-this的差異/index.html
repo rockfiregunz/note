@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/aa/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/aa/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/aa/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/aa/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/codenote/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/codenote/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/codenote/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/codenote/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/aa/css/main.css">
+<link rel="stylesheet" href="/codenote/css/main.css">
 
 
-<link rel="stylesheet" href="/aa/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/codenote/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://rockfiregunz.github.io/aa').hostname,
-    root: '/aa/',
+    hostname: new URL('https://rockfiregunz.github.io/codenote').hostname,
+    root: '/codenote/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -49,7 +49,7 @@
   <meta name="description" content="self和 $this 的差異 self是參照到目前的class，$this是參照到目前的object ( 已經被宣告的實體上 )  self 可使用在static上，$this不行  static method 因為沒有物件的實體，所以需要注意不可以使用 $this ，要用self:: 可以直接存取 static method ( 如self::method() )，但是無法直接存取 stati">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[PHP] self和$this的差異">
-<meta property="og:url" content="https://rockfiregunz.github.io/aa/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/index.html">
+<meta property="og:url" content="https://rockfiregunz.github.io/codenote/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
 <meta property="og:description" content="self和 $this 的差異 self是參照到目前的class，$this是參照到目前的object ( 已經被宣告的實體上 )  self 可使用在static上，$this不行  static method 因為沒有物件的實體，所以需要注意不可以使用 $this ，要用self:: 可以直接存取 static method ( 如self::method() )，但是無法直接存取 stati">
 <meta property="og:locale" content="zh_TW">
@@ -59,7 +59,7 @@
 <meta property="article:tag" content="class">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/aa/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
+<link rel="canonical" href="https://rockfiregunz.github.io/codenote/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
 
 
 <script id="page-configurations">
@@ -113,7 +113,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/aa/" class="brand" rel="start">
+      <a href="/codenote/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">jimmy's note</span>
         <span class="logo-line-after"><i></i></span>
@@ -137,27 +137,27 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/aa/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+    <a href="/codenote/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/aa/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+    <a href="/codenote/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/aa/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+    <a href="/codenote/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/aa/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+    <a href="/codenote/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/aa/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+    <a href="/codenote/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
   </ul>
@@ -186,10 +186,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/aa/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/codenote/2020/02/17/PHP-self%E5%92%8C-this%E7%9A%84%E5%B7%AE%E7%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/aa/images/avatar.gif">
+      <meta itemprop="image" content="/codenote/images/avatar.gif">
       <meta itemprop="name" content="jimmy">
       <meta itemprop="description" content="">
     </span>
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/aa/categories/PHP/" itemprop="url" rel="index">
+                  <a href="/codenote/categories/PHP/" itemprop="url" rel="index">
                     <span itemprop="name">PHP</span>
                   </a>
                 </span>
@@ -260,7 +260,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/aa/tags/class/" rel="tag"># class</a>
+              <a href="/codenote/tags/class/" rel="tag"># class</a>
           </div>
 
         
@@ -269,11 +269,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/aa/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="prev" title="同一台電腦使用 gitlab跟github SSH key">
+    <a href="/codenote/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="prev" title="同一台電腦使用 gitlab跟github SSH key">
       <i class="fa fa-chevron-left"></i> 同一台電腦使用 gitlab跟github SSH key
     </a></div>
       <div class="post-nav-item">
-    <a href="/aa/2020/02/17/MySQL-CTE%E9%81%9E%E8%BF%B4/" rel="next" title="[MySQL] CTE遞迴">
+    <a href="/codenote/2020/02/17/MySQL-CTE%E9%81%9E%E8%BF%B4/" rel="next" title="[MySQL] CTE遞迴">
       [MySQL] CTE遞迴 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -347,20 +347,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/aa/archives/">
+          <a href="/codenote/archives/">
         
           <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/aa/categories/">
+            <a href="/codenote/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/aa/tags/">
+            <a href="/codenote/tags/">
           
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -413,19 +413,19 @@
   </div>
 
   
-  <script src="/aa/lib/anime.min.js"></script>
-  <script src="/aa/lib/velocity/velocity.min.js"></script>
-  <script src="/aa/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/codenote/lib/anime.min.js"></script>
+  <script src="/codenote/lib/velocity/velocity.min.js"></script>
+  <script src="/codenote/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/aa/js/utils.js"></script>
+<script src="/codenote/js/utils.js"></script>
 
-<script src="/aa/js/motion.js"></script>
-
-
-<script src="/aa/js/schemes/pisces.js"></script>
+<script src="/codenote/js/motion.js"></script>
 
 
-<script src="/aa/js/next-boot.js"></script>
+<script src="/codenote/js/schemes/pisces.js"></script>
+
+
+<script src="/codenote/js/next-boot.js"></script>
 
 
 
