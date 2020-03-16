@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     hostname: new URL('https://rockfiregunz.github.io').hostname,
-    root: '/',
+    root: '/blog/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -54,7 +54,7 @@
 <meta property="og:description" content="工作上越來越多使用到 json 用法，    key word 說明    JSON_QUERY 從 JSON 文字擷取物件或陣列   JSON_VALUE 從 JSON 文字中擷取值">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-03-12T09:48:29.000Z">
-<meta property="article:modified_time" content="2020-03-13T05:12:02.147Z">
+<meta property="article:modified_time" content="2020-03-13T05:42:32.295Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="MSSQL">
 <meta property="article:tag" content="json">
@@ -114,7 +114,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">jimmy's note</span>
         <span class="logo-line-after"><i></i></span>
@@ -138,27 +138,27 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+    <a href="/blog/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+    <a href="/blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+    <a href="/blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
   </ul>
@@ -190,7 +190,7 @@
     <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/03/12/MSSQL-json%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
       <meta itemprop="name" content="jimmy">
       <meta itemprop="description" content="">
     </span>
@@ -218,7 +218,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MSSQL/" itemprop="url" rel="index">
+                  <a href="/blog/categories/MSSQL/" itemprop="url" rel="index">
                     <span itemprop="name">MSSQL</span>
                   </a>
                 </span>
@@ -254,9 +254,12 @@
 </tbody></table>
 <a id="more"></a>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @<span class="keyword">str</span> <span class="built_in">varchar</span>(<span class="keyword">max</span>) =<span class="string">'[&#123;"promoteId":"p1584004810486","promoteSTime":"2020-03-12","promoteETime":"2020-03-12","promoteProduct":[&#123;"productId":"28","price":"8990","sellPrice":"4990","dealerPrice":"200"&#125;,&#123;"productId":"3","price":"3333","sellPrice":"4444","dealerPrice":"0"&#125;]&#125;,&#123;"promoteId":"p1584004810541","promoteSTime":"2020-03-12","promoteETime":"2020-03-12","promoteProduct":[&#123;"productId":"15","price":"999","sellPrice":"888","dealerPrice":"0"&#125;]&#125;]'</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    展開結果</span></span><br><span class="line"><span class="comment">    [&#123;</span></span><br><span class="line"><span class="comment">        "promoteSTime": "2019-07-06",</span></span><br><span class="line"><span class="comment">        "promoteETime": "2014-03-03",</span></span><br><span class="line"><span class="comment">        "promoteProduct": </span></span><br><span class="line"><span class="comment">        [&#123;</span></span><br><span class="line"><span class="comment">            "productId": "28",</span></span><br><span class="line"><span class="comment">            "price": "3990",</span></span><br><span class="line"><span class="comment">            "sellPrice": "3990",</span></span><br><span class="line"><span class="comment">            "dealerPrice": "0"</span></span><br><span class="line"><span class="comment">        &#125;,</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            "productId": "29",</span></span><br><span class="line"><span class="comment">            "price": "500",</span></span><br><span class="line"><span class="comment">            "sellPrice": "700",</span></span><br><span class="line"><span class="comment">            "dealerPrice": "0"</span></span><br><span class="line"><span class="comment">        &#125;]</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        "promoteSTime": "2020-03-12",</span></span><br><span class="line"><span class="comment">        "promoteETime": "2020-03-12",</span></span><br><span class="line"><span class="comment">        "promoteProduct": ""</span></span><br><span class="line"><span class="comment">    &#125;,</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        "promoteSTime": "2006-04-21",</span></span><br><span class="line"><span class="comment">        "promoteETime": "2003-03-19",</span></span><br><span class="line"><span class="comment">        "promoteProduct": </span></span><br><span class="line"><span class="comment">        [&#123;</span></span><br><span class="line"><span class="comment">            "productId": "18",</span></span><br><span class="line"><span class="comment">            "price": "300",</span></span><br><span class="line"><span class="comment">            "sellPrice": "400",</span></span><br><span class="line"><span class="comment">            "dealerPrice": "0"</span></span><br><span class="line"><span class="comment">        &#125;]</span></span><br><span class="line"><span class="comment">    &#125;]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="資料轉成-JSON"><a href="#資料轉成-JSON" class="headerlink" title="資料轉成 JSON"></a>資料轉成 JSON</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @tmpTalbe <span class="keyword">table</span> (<span class="keyword">id</span> <span class="built_in">int</span> <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>),employeename <span class="keyword">nvarchar</span>(<span class="number">10</span>),employee <span class="keyword">nvarchar</span>(<span class="number">10</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> @tmpTalbe (employeename,employee)</span><br><span class="line"></span><br><span class="line"><span class="keyword">values</span></span><br><span class="line"></span><br><span class="line">(<span class="string">'董事甲'</span>,<span class="string">'董事'</span>),</span><br><span class="line">(<span class="string">'經理乙'</span>,<span class="string">'經理'</span>),</span><br><span class="line">(<span class="string">'經理丙'</span>,<span class="string">'經理'</span>),</span><br><span class="line">(<span class="string">'組長丁'</span>,<span class="string">'組長'</span>),</span><br><span class="line">(<span class="string">'員工戊'</span>,<span class="string">'員工'</span>),</span><br><span class="line">(<span class="string">'經理己'</span>,<span class="string">'經理'</span>),</span><br><span class="line">(<span class="string">'會計庚'</span>,<span class="string">'會計'</span>),</span><br><span class="line">(<span class="string">'人事辛'</span>,<span class="string">'人事'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> @tmpTalbe <span class="keyword">for</span>  <span class="keyword">json</span> <span class="keyword">auto</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="JSON-QUERY-amp-amp-JSON-VALUE"><a href="#JSON-QUERY-amp-amp-JSON-VALUE" class="headerlink" title="JSON_QUERY  &amp;&amp; JSON_VALUE"></a>JSON_QUERY  &amp;&amp; JSON_VALUE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  </span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteId'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteSTime'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteETime'</span>)	,</span><br><span class="line">	JSON_QUERY ([<span class="keyword">value</span>],<span class="string">'$.promoteProduct'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteProduct[0].productId'</span>),</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteProduct[0].price'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteProduct[1].productId'</span>),</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteProduct[1].price'</span>)		</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> openjson(@<span class="keyword">str</span>);</span><br></pre></td></tr></table></figure>
 
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  </span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteId'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteSTime'</span>)	,</span><br><span class="line">	JSON_VALUE ([<span class="keyword">value</span>],<span class="string">'$.promoteETime'</span>)	</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> openj</span><br><span class="line"><span class="comment">#### 將資料轉成 JSON</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 將JSON資料展開 單一</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 將JSON資料展開 多節點資料</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteId'</span>)		<span class="keyword">as</span>	promoteId,</span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteSTime'</span>)	<span class="keyword">as</span>	promoteSTime,</span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteETime'</span>)	<span class="keyword">as</span>	promoteETime,</span><br><span class="line">	p.*</span><br><span class="line"><span class="keyword">from</span> openjson(@<span class="keyword">str</span>)	<span class="keyword">as</span> t</span><br><span class="line"><span class="keyword">CROSS</span> <span class="keyword">APPLY</span> OPENJSON(t.value, <span class="string">'$.promoteProduct'</span>)</span><br><span class="line"><span class="keyword">WITH</span></span><br><span class="line">(</span><br><span class="line">    productId <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.productId'</span>,</span><br><span class="line">	price <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.price'</span>,</span><br><span class="line">	sellPrice <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.sellPrice'</span>,</span><br><span class="line">	dealerPrice <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.dealerPrice'</span></span><br><span class="line"> </span><br><span class="line">) <span class="keyword">AS</span> p;</span><br></pre></td></tr></table></figure>
+<h4 id="JSON資料展開-多節點資料"><a href="#JSON資料展開-多節點資料" class="headerlink" title="JSON資料展開 多節點資料"></a>JSON資料展開 多節點資料</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteId'</span>)		<span class="keyword">as</span>	promoteId,</span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteSTime'</span>)	<span class="keyword">as</span>	promoteSTime,</span><br><span class="line">	JSON_VALUE(t.value,<span class="string">'$.promoteETime'</span>)	<span class="keyword">as</span>	promoteETime,</span><br><span class="line">	p.*</span><br><span class="line"><span class="keyword">from</span> openjson(@<span class="keyword">str</span>)	<span class="keyword">as</span> t</span><br><span class="line"><span class="keyword">CROSS</span> <span class="keyword">APPLY</span> OPENJSON(t.value, <span class="string">'$.promoteProduct'</span>)</span><br><span class="line"><span class="keyword">WITH</span></span><br><span class="line">(</span><br><span class="line">    productId <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.productId'</span>,</span><br><span class="line">	price <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.price'</span>,</span><br><span class="line">	sellPrice <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.sellPrice'</span>,</span><br><span class="line">	dealerPrice <span class="built_in">VARCHAR</span>(<span class="number">25</span>) <span class="string">'$.dealerPrice'</span></span><br><span class="line"> </span><br><span class="line">) <span class="keyword">AS</span> p;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -266,8 +269,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/MSSQL/" rel="tag"># MSSQL</a>
-              <a href="/tags/json/" rel="tag"># json</a>
+              <a href="/blog/tags/MSSQL/" rel="tag"># MSSQL</a>
+              <a href="/blog/tags/json/" rel="tag"># json</a>
           </div>
 
         
@@ -276,7 +279,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/05/Vue-%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7/" rel="prev" title="Vue 物件屬性">
+    <a href="/blog/2020/03/05/Vue-%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7/" rel="prev" title="Vue 物件屬性">
       <i class="fa fa-chevron-left"></i> Vue 物件屬性
     </a></div>
       <div class="post-nav-item"></div>
@@ -339,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-QUERY-amp-amp-JSON-VALUE"><span class="nav-number">1.</span> <span class="nav-text">JSON_QUERY  &amp;&amp; JSON_VALUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#資料轉成-JSON"><span class="nav-number">1.</span> <span class="nav-text">資料轉成 JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON-QUERY-amp-amp-JSON-VALUE"><span class="nav-number">2.</span> <span class="nav-text">JSON_QUERY  &amp;&amp; JSON_VALUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSON資料展開-多節點資料"><span class="nav-number">3.</span> <span class="nav-text">JSON資料展開 多節點資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -351,20 +354,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/blog/archives/">
         
           <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/blog/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/blog/tags/">
           
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -417,19 +420,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
 
 
 
