@@ -5,22 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/note/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/note/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/note/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/note/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/note/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/note/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://rockfiregunz.github.io').hostname,
-    root: '/',
+    hostname: new URL('https://rockfiregunz.github.io/note').hostname,
+    root: '/note/',
     scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
@@ -49,21 +49,21 @@
   <meta name="description" content="原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 為什麼我推薦hexo部署到Gitlab  以下是他說主要主要差異：  gitlab對於自定域名仍可使用https因為還沒有個人域名，無法測試。  gitlab有ci可以自動化，不必再下hexo g、hexo d，只要push新文章，後面一切自動化個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="將hexo移到gitlab">
-<meta property="og:url" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/index.html">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
 <meta property="og:description" content="原本只是想查看看 github 跟 gitlab 的分別，發現這篇文章的介紹 為什麼我推薦hexo部署到Gitlab  以下是他說主要主要差異：  gitlab對於自定域名仍可使用https因為還沒有個人域名，無法測試。  gitlab有ci可以自動化，不必再下hexo g、hexo d，只要push新文章，後面一切自動化個人感覺只是將　hexo 指令換成 git 的指令，不過好處是 commit">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
-<meta property="og:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/2.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/2.png">
 <meta property="article:published_time" content="2020-02-12T02:02:27.000Z">
 <meta property="article:modified_time" content="2020-03-06T06:21:04.879Z">
 <meta property="article:author" content="jimmy">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/1.png">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
 
 
 <script id="page-configurations">
@@ -117,7 +117,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/" class="brand" rel="start">
+      <a href="/note/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">jimmy's note</span>
         <span class="logo-line-after"><i></i></span>
@@ -141,27 +141,27 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+    <a href="/note/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+    <a href="/note/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+    <a href="/note/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+    <a href="/note/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+    <a href="/note/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
 
   </li>
   </ul>
@@ -190,10 +190,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/note/images/avatar.gif">
       <meta itemprop="name" content="jimmy">
       <meta itemprop="description" content="">
     </span>
@@ -221,7 +221,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                  <a href="/note/categories/Hexo/" itemprop="url" rel="index">
                     <span itemprop="name">Hexo</span>
                   </a>
                 </span>
@@ -259,7 +259,7 @@
 <p>看完之後，也想嘗試在 gitlab上面發佈。</p>
 <a id="more"></a>
 <h3 id="安裝gitlab-ssh-key"><a href="#安裝gitlab-ssh-key" class="headerlink" title="安裝gitlab ssh key"></a>安裝gitlab ssh key</h3><p>
-<a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" title="站內文章：同一台電腦使用 gitlab跟github SSH key">站內文章：同一台電腦使用 gitlab跟github SSH key</a></p>
+<a href="/note/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" title="站內文章：同一台電腦使用 gitlab跟github SSH key">站內文章：同一台電腦使用 gitlab跟github SSH key</a></p>
 
 <p>我是參考這篇文章 <a href="https://kennyliblog.nctu.me/2019/08/18/Have-SSH-keys-with-Github-and-Gitlab/#2-%E6%AA%A2%E6%9F%A5%E6%AA%94%E6%A1%88" target="_blank" rel="noopener">Kenny&#39;s Blog 同一部電腦管理 Github 與 Gitlab SSH keys</a></p>
 <h3 id="建立-hexo"><a href="#建立-hexo" class="headerlink" title="建立 hexo"></a>建立 hexo</h3><p>步驟 請參閱 文章1.hexo建立</p>
@@ -294,8 +294,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/note/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/note/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
           </div>
 
         
@@ -304,11 +304,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/" rel="prev" title="2-hexo 設定及指令">
+    <a href="/note/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/" rel="prev" title="2-hexo 設定及指令">
       <i class="fa fa-chevron-left"></i> 2-hexo 設定及指令
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="next" title="同一台電腦使用 gitlab跟github SSH key">
+    <a href="/note/2020/02/12/%E5%90%8C%E4%B8%80%E5%8F%B0%E9%9B%BB%E8%85%A6%E4%BD%BF%E7%94%A8-gitlab%E8%B7%9Fgithub-SSH-key/" rel="next" title="同一台電腦使用 gitlab跟github SSH key">
       同一台電腦使用 gitlab跟github SSH key <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -382,20 +382,20 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/note/archives/">
         
           <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/note/categories/">
           
         <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/note/tags/">
           
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">標籤</span></a>
@@ -448,19 +448,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/note/lib/anime.min.js"></script>
+  <script src="/note/lib/velocity/velocity.min.js"></script>
+  <script src="/note/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/note/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/note/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/note/js/schemes/pisces.js"></script>
+
+
+<script src="/note/js/next-boot.js"></script>
 
 
 
