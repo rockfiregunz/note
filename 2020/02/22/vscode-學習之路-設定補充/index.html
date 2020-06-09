@@ -46,19 +46,21 @@
   };
 </script>
 
-  <meta name="description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jimmy">
-<meta property="og:url" content="https://rockfiregunz.github.io/note/about/index.html">
+  <meta name="description" content="launchSettings  跟  launch.json 差異">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-學習之路-設定補充">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/02/22/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E8%A8%AD%E5%AE%9A%E8%A3%9C%E5%85%85/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
+<meta property="og:description" content="launchSettings  跟  launch.json 差異">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-02-11T02:14:11.000Z">
-<meta property="article:modified_time" content="2020-02-11T02:23:34.504Z">
+<meta property="article:published_time" content="2020-02-22T07:30:12.000Z">
+<meta property="article:modified_time" content="2020-03-13T08:27:41.536Z">
 <meta property="article:author" content="jimmy">
+<meta property="article:tag" content="vsocde">
+<meta property="article:tag" content="c sharp">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/note/about/">
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/02/22/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E8%A8%AD%E5%AE%9A%E8%A3%9C%E5%85%85/">
 
 
 <script id="page-configurations">
@@ -66,12 +68,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>jimmy | jimmy's note
-  </title>
+  <title>vscode-學習之路-設定補充 | jimmy's note</title>
   
 
 
@@ -177,45 +178,111 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-TW">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/02/22/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E8%A8%AD%E5%AE%9A%E8%A3%9C%E5%85%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vscode-學習之路-設定補充
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">jimmy
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
 
-<div class="post-meta">
+              <time title="創建時間：2020-02-22 15:30:12" itemprop="dateCreated datePublished" datetime="2020-02-22T15:30:12+08:00">2020-02-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/vscode/" itemprop="url" rel="index">
+                    <span itemprop="name">vscode</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>launchSettings  跟  launch.json 差異</p>
+<a id="more"></a>
+
+<h3 id="vsCode-設定檔目錄"><a href="#vsCode-設定檔目錄" class="headerlink" title=".vsCode 設定檔目錄"></a>.vsCode 設定檔目錄</h3><p>使用 Visual Studio Code ，想要改變開發環境設定，需要更改 launch.json</p>
+<ul>
+<li>launch.json　　用 VS Code 啟動程式的設定檔</li>
+<li>tasks.json 　　定義 launch.json 會用到的指令檔</li>
+</ul>
+<h3 id="Properties-設定檔目錄"><a href="#Properties-設定檔目錄" class="headerlink" title="Properties 設定檔目錄"></a>Properties 設定檔目錄</h3><p>使用 Visual Studion IDE(如Visual Studio 2017)，想要更改開發環境設定,需要更改 lauchSetting.json</p>
+<ul>
+<li>launchSettings.json </li>
+</ul>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://docs.microsoft.com/zh-tw/aspnet/core/fundamentals/environments?view=aspnetcore-3.1" target="_blank" rel="noopener">在 ASP.NET Core 中使用多個環境</a><br><a href="https://blog.johnwu.cc/article/ironman-day16-asp-net-core-multiple-environments.html" target="_blank" rel="noopener">John Wu -[Day01] ASP.NET Core 2 系列</a><br><a href="https://blog.miniasp.com/post/2019/01/22/Configure-Tasks-and-Launch-in-VSCode-for-NET-Core" target="_blank" rel="noopener">如何在 VSCode 設定完整的 .NET Core 建置、發行與部署工作</a></p>
+<p>功力不夠，尚未調整設定。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/note/tags/vsocde/" rel="tag"># vsocde</a>
+              <a href="/note/tags/c-sharp/" rel="tag"># c sharp</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/02/21/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-dotnet%E6%8C%87%E4%BB%A4/" rel="prev" title="vscode-學習之路-dotnet指令">
+      <i class="fa fa-chevron-left"></i> vscode-學習之路-dotnet指令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/02/24/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-MVC%E5%8A%A0%E5%85%A5Vue/" rel="next" title="vscode-學習之路-MVC加入Vue">
+      vscode-學習之路-MVC加入Vue <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
@@ -267,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vsCode-設定檔目錄"><span class="nav-number">1.</span> <span class="nav-text">.vsCode 設定檔目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-設定檔目錄"><span class="nav-number">2.</span> <span class="nav-text">Properties 設定檔目錄</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

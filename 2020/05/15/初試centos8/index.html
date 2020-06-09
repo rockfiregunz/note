@@ -46,19 +46,22 @@
   };
 </script>
 
-  <meta name="description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jimmy">
-<meta property="og:url" content="https://rockfiregunz.github.io/note/about/index.html">
+  <meta name="description" content="以前都是用 Ubuntu 來架設網站，但安全性相對低一點，所以嘗試用 CentOS 來測試架站。 目前 我已經安裝完成 ssh ，sql serve ,nginx。在預設的資料夾(&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html) 底下是可以執行的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初試centos8">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
+<meta property="og:description" content="以前都是用 Ubuntu 來架設網站，但安全性相對低一點，所以嘗試用 CentOS 來測試架站。 目前 我已經安裝完成 ssh ，sql serve ,nginx。在預設的資料夾(&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html) 底下是可以執行的。">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-02-11T02:14:11.000Z">
-<meta property="article:modified_time" content="2020-02-11T02:23:34.504Z">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/1-1.jpg">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/1-2.jpg">
+<meta property="article:published_time" content="2020-05-15T02:09:00.000Z">
+<meta property="article:modified_time" content="2020-05-22T01:29:18.066Z">
 <meta property="article:author" content="jimmy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/1-1.jpg">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/note/about/">
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/">
 
 
 <script id="page-configurations">
@@ -66,12 +69,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>jimmy | jimmy's note
-  </title>
+  <title>初試centos8 | jimmy's note</title>
   
 
 
@@ -177,45 +179,114 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-TW">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/05/15/%E5%88%9D%E8%A9%A6centos8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初試centos8
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">jimmy
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
 
-<div class="post-meta">
+              <time title="創建時間：2020-05-15 10:09:00" itemprop="dateCreated datePublished" datetime="2020-05-15T10:09:00+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>以前都是用 Ubuntu 來架設網站，但安全性相對低一點，所以嘗試用 CentOS 來測試架站。</p>
+<p>目前 我已經安裝完成 ssh ，sql serve ,nginx。<br>在預設的資料夾(/usr/share/nginx/html) 底下是可以執行的。</p>
+<a id="more"></a>
+
+<p>正題來了<br>預設資料夾 並不是我理想的資料夾，於是我在 /var 底下建立 www </p>
+<p>修改 nginx.conf 的 root 目錄之後，就發現網站會出現 403 forbidden ，查看 erroer.log 之後，發現是權限不足(13 permission denied)<br>，所以 跑去 將 /var/www 及 檔案 目錄 設定權限，但還是發現 沒有效果。</p>
+<p>網路 解法<br><a href="https://kknews.cc/zh-tw/code/82j2zvn.html" target="_blank" rel="noopener">四種解決Nginx出現403 forbidden 報錯的方法</a></p>
+<p>我沒試過，因為看到要將 user 改成 root 且 SELINUX 要關閉，我就直接放棄使用。<br>畢竟 我對  SELINUX 不了解，也不知道關閉有何風險。</p>
+<p>解法 (我使用的)</p>
+<p><a href="https://blog.rex-tsou.com/2017/06/%E8%A7%A3%E6%B1%BA-nginx-403-forbidden/" target="_blank" rel="noopener">解決 Nginx 403 Forbidden</a></p>
+<p>上面網址文章內容重點</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ll -Z &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;xxx.conf # 顯示出 [身分識別:角色:type] 的SElinux 訊息，type 最重要，可能會是 &quot;httpd_config_t&quot;</span><br><span class="line">ll -Z &#x2F;srv&#x2F;www # type可能是&quot;var_t&quot;或是其他，總之不是httpd開頭就會有權限問題</span><br><span class="line"></span><br><span class="line">restorecon -Rv &#x2F;srv&#x2F;www </span><br><span class="line"># -R：連同子資料夾</span><br><span class="line"># -v：顯示過程</span><br><span class="line"># 此時 &#x2F;srv&#x2F;www 的 type 變成 &quot;httpd_sys_content_t&quot;，成功~</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">su - # 進入root身分</span><br><span class="line">getsebool -a | grep httpd # 顯示 SElinux boolean 權限</span><br><span class="line">setsebool -P httpd_enable_homedirs 1</span><br><span class="line">setsebool -P httpd_can_network_connect 1 # -P flag &#x3D; persist</span><br><span class="line">reboot # 重啟linux</span><br><span class="line">service nginx restart # 重啟nginx</span><br><span class="line"></span><br><span class="line"># 或是先關掉SElinux（不建議）</span><br><span class="line">vim &#x2F;etc&#x2F;sysconfig&#x2F;selinux </span><br><span class="line">getenforce # 取得 SElinux 狀態</span><br><span class="line">setenforce permissive # 寬容模式（enforcing, permissive, disabled）</span><br></pre></td></tr></table></figure>
+<p>查看 www 狀態<br><code>ll -Z /var/www</code><br><img src="1-1.jpg" alt=""></p>
+<p>下完 <code>restorecon -Rv /var/www</code> 之後</p>
+<p><img src="1-2.jpg" alt=""></p>
+<p>然後重整之後 就看到畫面。</p>
+<p>應該還有其他設定要處理，但目前尚未研究到就只能等之後了</p>
+<p>※ 權限 要改回來，我是為了測試 才將權限開到最高。</p>
+<p>之後還有 node.js, php ,net core 等等 都需要嘗試……….</p>
+<h4 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h4><p><a href="http://c.biancheng.net/view/1151.html" target="_blank" rel="noopener">SELinux安全上下文的修改和设置</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/04/10/vue-export%E3%80%81export-default/" rel="prev" title="vue-export、export default">
+      <i class="fa fa-chevron-left"></i> vue-export、export default
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/05/19/%E8%87%A8%E6%99%82%E7%B4%80%E9%8C%84/" rel="next" title="臨時紀錄">
+      臨時紀錄 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
@@ -267,6 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#參考文件"><span class="nav-number">1.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

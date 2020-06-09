@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/note/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/note/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/note/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/note/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/note/css/main.css">
+
+
+<link rel="stylesheet" href="/note/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rockfiregunz.github.io/note').hostname,
+    root: '/note/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="因為工作需要寫到，多層搜尋及排列部分，所以找了有關遞迴的寫法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MSSQL-CTE遞迴">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/02/17/MSSQL-CTE%E9%81%9E%E8%BF%B4/index.html">
+<meta property="og:site_name" content="jimmy&#39;s note">
+<meta property="og:description" content="因為工作需要寫到，多層搜尋及排列部分，所以找了有關遞迴的寫法。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-02-17T06:57:08.000Z">
+<meta property="article:modified_time" content="2020-03-13T08:27:41.501Z">
+<meta property="article:author" content="jimmy">
+<meta property="article:tag" content="cte">
+<meta property="article:tag" content="MSSQL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/02/17/MSSQL-CTE%E9%81%9E%E8%BF%B4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>MSSQL-CTE遞迴 | jimmy's note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/note/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jimmy's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">jimmy's note</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/note/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/note/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/note/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/note/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/note/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/02/17/MSSQL-CTE%E9%81%9E%E8%BF%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MSSQL-CTE遞迴
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-17 14:57:08" itemprop="dateCreated datePublished" datetime="2020-02-17T14:57:08+08:00">2020-02-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/MSSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MSSQL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>因為工作需要寫到，多層搜尋及排列部分，所以找了有關遞迴的寫法。</p>
+<a id="more"></a>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">declare</span> @tmpTable <span class="keyword">table</span> (<span class="keyword">id</span> <span class="built_in">int</span>, bel <span class="built_in">int</span> ,[<span class="keyword">name</span>] <span class="built_in">varchar</span>(<span class="number">20</span>));</span><br><span class="line"> </span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> @tmpTable </span><br><span class="line"><span class="keyword">values</span>  (<span class="number">1</span>,<span class="number">0</span>,<span class="string">'A'</span>)	,(<span class="number">2</span>,<span class="number">1</span>,<span class="string">'B'</span>)	,(<span class="number">3</span>,<span class="number">1</span>,<span class="string">'C'</span>),</span><br><span class="line">	(<span class="number">4</span>,<span class="number">3</span>,<span class="string">'D'</span>)	,(<span class="number">5</span>,<span class="number">3</span>,<span class="string">'E'</span>)	,(<span class="number">6</span>,<span class="number">4</span>,<span class="string">'F'</span>),</span><br><span class="line">	(<span class="number">7</span>,<span class="number">4</span>,<span class="string">'G'</span>)	,(<span class="number">8</span>,<span class="number">4</span>,<span class="string">'H'</span>)	,(<span class="number">9</span>,<span class="number">6</span>,<span class="string">'I'</span>),</span><br><span class="line">	(<span class="number">10</span>,<span class="number">6</span>,<span class="string">'J'</span>)	,(<span class="number">11</span>,<span class="number">9</span>,<span class="string">'K'</span>)	,(<span class="number">12</span>,<span class="number">0</span>,<span class="string">'L'</span>)</span><br><span class="line"></span><br><span class="line">;<span class="keyword">with</span> cte <span class="keyword">as</span>  </span><br><span class="line">(</span><br><span class="line">	<span class="keyword">select</span> *, <span class="number">1</span> <span class="keyword">as</span> [<span class="keyword">level</span>],	(<span class="keyword">cast</span>(bel <span class="keyword">as</span> <span class="built_in">varchar</span>)+<span class="keyword">cast</span>(<span class="keyword">id</span> <span class="keyword">as</span> <span class="built_in">varchar</span>))	<span class="keyword">as</span> <span class="keyword">sort</span> </span><br><span class="line">	<span class="keyword">from</span> @tmpTable <span class="keyword">where</span> bel=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">	<span class="comment">/*與自己本身做遞迴*/</span></span><br><span class="line">	<span class="keyword">select</span> t1.*,t2.[<span class="keyword">level</span>]+<span class="number">1</span> <span class="keyword">as</span> [<span class="keyword">level</span>],	(<span class="keyword">cast</span>(t2.sort <span class="keyword">as</span> <span class="built_in">varchar</span>)+<span class="keyword">cast</span>(t1.id <span class="keyword">as</span> <span class="built_in">varchar</span>)) <span class="keyword">as</span> <span class="keyword">sort</span> </span><br><span class="line">	<span class="keyword">from</span>  @tmpTable <span class="keyword">as</span> t1 </span><br><span class="line">	<span class="keyword">inner</span> <span class="keyword">join</span> cte <span class="keyword">as</span> t2 <span class="keyword">on</span> t1.bel=t2.id</span><br><span class="line">	<span class="keyword">where</span> t1.bel&lt;&gt;<span class="number">0</span></span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> cte <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">sort</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://dotblogs.com.tw/henryli/2014/06/03/145344" target="_blank" rel="noopener">Henry 的 SQL 學習筆記-CTE 的應用(3) - 遞迴</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/note/tags/cte/" rel="tag"># cte</a>
+              <a href="/note/tags/MSSQL/" rel="tag"># MSSQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/02/17/MySQL-CTE%E9%81%9E%E8%BF%B4/" rel="prev" title="MySQL-CTE遞迴">
+      <i class="fa fa-chevron-left"></i> MySQL-CTE遞迴
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/02/21/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-%E5%BB%BA%E7%AB%8B%E6%96%B0%E5%B0%88%E6%A1%88-MVC-WEB/" rel="next" title="vscode-學習之路-建立新專案(MVC/WEB)">
+      vscode-學習之路-建立新專案(MVC/WEB) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">1.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">jimmy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/note/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/note/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/note/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jimmy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/note/lib/anime.min.js"></script>
+  <script src="/note/lib/velocity/velocity.min.js"></script>
+  <script src="/note/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/note/js/utils.js"></script>
+
+<script src="/note/js/motion.js"></script>
+
+
+<script src="/note/js/schemes/pisces.js"></script>
+
+
+<script src="/note/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

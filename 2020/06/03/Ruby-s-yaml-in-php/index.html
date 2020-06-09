@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/note/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/note/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/note/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/note/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/note/css/main.css">
+
+
+<link rel="stylesheet" href="/note/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rockfiregunz.github.io/note').hostname,
+    root: '/note/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="這篇單純的紀錄 如何用PHP 讀取 ruby yaml， 因原本的 php的yaml 讀取方式 ，來讀取 ruby yaml會不正確。 PS 好幾年前遇到的問題 ，只是搬到這邊來註記">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby&#39;s yaml in php">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/06/03/Ruby-s-yaml-in-php/index.html">
+<meta property="og:site_name" content="jimmy&#39;s note">
+<meta property="og:description" content="這篇單純的紀錄 如何用PHP 讀取 ruby yaml， 因原本的 php的yaml 讀取方式 ，來讀取 ruby yaml會不正確。 PS 好幾年前遇到的問題 ，只是搬到這邊來註記">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-06-03T01:31:56.000Z">
+<meta property="article:modified_time" content="2020-06-03T06:45:27.280Z">
+<meta property="article:author" content="jimmy">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/06/03/Ruby-s-yaml-in-php/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Ruby's yaml in php | jimmy's note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/note/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jimmy's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">jimmy's note</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/note/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/note/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/note/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/note/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/note/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/03/Ruby-s-yaml-in-php/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ruby's yaml in php
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-03 09:31:56" itemprop="dateCreated datePublished" datetime="2020-06-03T09:31:56+08:00">2020-06-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/yaml/" itemprop="url" rel="index">
+                    <span itemprop="name">yaml</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/yaml/Ruby/" itemprop="url" rel="index">
+                    <span itemprop="name">Ruby</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p> 這篇單純的紀錄 如何用PHP 讀取 ruby yaml，<br> 因原本的 php的yaml 讀取方式 ，來讀取 ruby yaml會不正確。<br> PS 好幾年前遇到的問題 ，只是搬到這邊來註記</p>
+<a id="more"></a>
+
+<h3 id="php檔案"><a href="#php檔案" class="headerlink" title="php檔案"></a>php檔案</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RubyYaml</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">parse</span><span class="params">($data)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $descriptorSpec = <span class="keyword">array</span>(</span><br><span class="line">            <span class="number">0</span> =&gt; <span class="keyword">array</span>(<span class="string">"pipe"</span>, <span class="string">"r"</span>),  <span class="comment">// stdin</span></span><br><span class="line">            <span class="number">1</span> =&gt; <span class="keyword">array</span>(<span class="string">"pipe"</span>, <span class="string">"w"</span>),  <span class="comment">// stdout</span></span><br><span class="line">            <span class="comment">//2 =&gt; array("pipe", "a"),  // stderr</span></span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        $process = proc_open(<span class="string">'ruby '</span>.<span class="keyword">__DIR__</span>.<span class="string">'/yaml2json.rb'</span>, $descriptorSpec, $pipes);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!is_resource($process))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CException(<span class="string">'Cannot start YAML parser'</span>);</span><br><span class="line"></span><br><span class="line">        fwrite($pipes[<span class="number">0</span>], $data);</span><br><span class="line">        fclose($pipes[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        $json = stream_get_contents($pipes[<span class="number">1</span>]);</span><br><span class="line">        fclose($pipes[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        proc_close($process);</span><br><span class="line"></span><br><span class="line">        $result = json_decode($json, <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span> ($result === <span class="keyword">null</span>) <span class="comment">// Don't your YAMLs contain plain NULL ever?</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CException(<span class="string">'YAML parsing failed: '</span>.$json);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ruby-檔案"><a href="#ruby-檔案" class="headerlink" title="ruby 檔案"></a>ruby 檔案</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">"json"</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'yaml'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recursion</span><span class="params">(v)</span></span></span><br><span class="line"></span><br><span class="line">  if v.class == String</span><br><span class="line">    v.force_encoding(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">  elsif v.class == Array</span><br><span class="line">    v.each <span class="keyword">do</span> <span class="params">|vv|</span></span><br><span class="line">      recursion(vv)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  elsif v.class == Hash</span><br><span class="line">    v.each <span class="keyword">do</span> <span class="params">|k, vv|</span></span><br><span class="line">      recursion(vv)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">thing = YAML.load(STDIN.read)</span><br><span class="line"></span><br><span class="line">recursion(thing)</span><br><span class="line"></span><br><span class="line">puts thing.to_json</span><br></pre></td></tr></table></figure>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://stackoverflow.com/questions/16199392/how-to-parse-rubys-yaml-in-php-sfyaml-and-spyc-wont-do-it-right" target="_blank" rel="noopener">How to parse Ruby’s YAML in PHP</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/" rel="prev" title="在 centos 架站 net core ">
+      <i class="fa fa-chevron-left"></i> 在 centos 架站 net core 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/" rel="next" title="vscode-NUnit測試">
+      vscode-NUnit測試 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php檔案"><span class="nav-number">1.</span> <span class="nav-text">php檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ruby-檔案"><span class="nav-number">2.</span> <span class="nav-text">ruby 檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">jimmy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/note/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/note/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/note/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jimmy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/note/lib/anime.min.js"></script>
+  <script src="/note/lib/velocity/velocity.min.js"></script>
+  <script src="/note/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/note/js/utils.js"></script>
+
+<script src="/note/js/motion.js"></script>
+
+
+<script src="/note/js/schemes/pisces.js"></script>
+
+
+<script src="/note/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

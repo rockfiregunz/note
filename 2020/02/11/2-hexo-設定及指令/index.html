@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/note/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/note/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/note/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/note/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/note/css/main.css">
+
+
+<link rel="stylesheet" href="/note/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rockfiregunz.github.io/note').hostname,
+    root: '/note/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Hexo 全域配置文件目前只記錄 我用到及理解部分 ，要詳細說明請到 hexo 官網">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2-hexo 設定及指令">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="jimmy&#39;s note">
+<meta property="og:description" content="Hexo 全域配置文件目前只記錄 我用到及理解部分 ，要詳細說明請到 hexo 官網">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/path/to/image">
+<meta property="article:published_time" content="2020-02-11T01:21:27.000Z">
+<meta property="article:modified_time" content="2020-03-06T06:21:08.938Z">
+<meta property="article:author" content="jimmy">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/note/path/to/image">
+
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>2-hexo 設定及指令 | jimmy's note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/note/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jimmy's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">jimmy's note</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/note/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/note/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/note/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/note/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/note/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/02/11/2-hexo-%E8%A8%AD%E5%AE%9A%E5%8F%8A%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2-hexo 設定及指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-11 09:21:27" itemprop="dateCreated datePublished" datetime="2020-02-11T09:21:27+08:00">2020-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Hexo-全域配置文件"><a href="#Hexo-全域配置文件" class="headerlink" title="Hexo 全域配置文件"></a>Hexo 全域配置文件</h3><p>目前只記錄 我用到及理解部分 ，要詳細說明請到 <a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">hexo 官網</a></p>
+<a id="more"></a>
+
+<h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><table>
+<thead>
+<tr>
+<th>關鍵字</th>
+<th>中文</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>網站標題</td>
+<td></td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>網站副標題</td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td>網站描述</td>
+<td></td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>關鍵字</td>
+<td>使用半型逗號，分隔多個關鍵字</td>
+</tr>
+<tr>
+<td>author</td>
+<td>作者</td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td>語系</td>
+<td>預設為 en，我設定成台灣 zh-TW</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>時區</td>
+<td>我設定成台北  Asia/Taipei</td>
+</tr>
+</tbody></table>
+<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><table>
+<thead>
+<tr>
+<th>關鍵字</th>
+<th>中文</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source_dir</td>
+<td>原始檔案資料夾，預設:source</td>
+<td>這個資料夾用於存放您的內容(建立的文章) ; post = 正式文章，draft = 草稿</td>
+</tr>
+<tr>
+<td>public_dir</td>
+<td>靜態檔案資料夾</td>
+<td>hexo g 產生的檔案會存放在這個資料夾</td>
+</tr>
+<tr>
+<td>tag_dir</td>
+<td>標籤資料夾</td>
+<td></td>
+</tr>
+<tr>
+<td>archive_dir</td>
+<td>彙整資料夾</td>
+<td></td>
+</tr>
+<tr>
+<td>category_dir</td>
+<td>分類資料夾</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h4><table>
+<thead>
+<tr>
+<th>關鍵字</th>
+<th>中文</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new_post_name</td>
+<td>新文章的檔案名稱</td>
+<td>new　[layout] <font color='blue'>“title”</font></td>
+</tr>
+<tr>
+<td>default_layout</td>
+<td>預設佈局</td>
+<td>new　<font color='blue'>[layout]</font> “title”</td>
+</tr>
+<tr>
+<td>post_asset_folder</td>
+<td>文章資料夾，預設:false</td>
+<td>建立文章同時建立對應資料夾，我為了區分各文章的檔案資料，所以改成 true</td>
+</tr>
+<tr>
+<td>render_drafts</td>
+<td>顯示草稿</td>
+<td>預設 : false</td>
+</tr>
+</tbody></table>
+<h4 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h4><table>
+<thead>
+<tr>
+<th>關鍵字</th>
+<th>中文</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>theme</td>
+<td>主題名稱</td>
+<td>我使用是next</td>
+</tr>
+</tbody></table>
+<h4 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h4><table>
+<thead>
+<tr>
+<th>關鍵字</th>
+<th>關鍵字2</th>
+<th>指令</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>deploy</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>type</td>
+<td>git</td>
+<td>要發佈的地方</td>
+</tr>
+<tr>
+<td></td>
+<td>repository</td>
+<td><a href="mailto:git@github.com">git@github.com</a>:帳號/帳號.github.io.git</td>
+<td>我使用ssh</td>
+</tr>
+<tr>
+<td></td>
+<td>branch</td>
+<td>master</td>
+<td>git 分支名稱</td>
+</tr>
+</tbody></table>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hexo init</td>
+<td>建立 hexo 資料夾</td>
+</tr>
+<tr>
+<td>hexo new [layout] “title”</td>
+<td>產生文章，layout 沒打就會用預設值</td>
+</tr>
+<tr>
+<td>hexo new draft “title”</td>
+<td>產生草稿</td>
+</tr>
+<tr>
+<td>hexo new publish “草稿標題”</td>
+<td>將草稿發布成正式文章，如果要將文章變成草稿，請將post資料夾的文章移到dratf資料夾</td>
+</tr>
+<tr>
+<td>hexo generate</td>
+<td>產生靜態檔案(public的檔案)</td>
+</tr>
+<tr>
+<td>hexo clean</td>
+<td>清除靜態檔案(public的檔案)</td>
+</tr>
+<tr>
+<td>hexo server</td>
+<td>啟動網站 預設：localhost:4000</td>
+</tr>
+<tr>
+<td>hexo s -p5000</td>
+<td>啟動網站 更改port， localhost:5000</td>
+</tr>
+<tr>
+<td>hexo server  – draft</td>
+<td>啟動網站 ，可觀看草稿</td>
+</tr>
+<tr>
+<td>hexo deploy</td>
+<td>發佈到網路上</td>
+</tr>
+</tbody></table>
+<h3 id="標籤外掛"><a href="#標籤外掛" class="headerlink" title="標籤外掛"></a>標籤外掛</h3><p>Markdown 引用檔案的語法 <code>![檔案標題](/檔案目錄/檔案名稱.檔名)</code></p>
+<table>
+<thead>
+<tr>
+<th>語法</th>
+<th>說明</th>
+<th>出處</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>![](/images/image.jpg)</code></td>
+<td>放在 source 底下的 images 目錄</td>
+<td>Markdown</td>
+</tr>
+<tr>
+<td><code>![](image.jpg)</code></td>
+<td>放在文章資料夾的檔案</td>
+<td>Markdown</td>
+</tr>
+<tr>
+<td><code><img src="/note/path/to/image" class="[class names]" title="[width] [height] " alt="title text"></code></td>
+<td>如果使用markdown 本身的語，在首頁會無法呈現，如要呈現，需使用hexo標籤外掛語法</td>
+<td>hexo</td>
+</tr>
+<tr>
+<td><code></code></td>
+<td>引用站內文章</td>
+<td>hexo</td>
+</tr>
+</tbody></table>
+<p>ex:</p>
+<pre><code>{% asset_path slug %}
+{% asset_img slug [title] %}
+{% asset_link slug [title] %}</code></pre><h4 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h4><p><a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">hexo 官網</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/note/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/note/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/02/07/1-hexo%E5%BB%BA%E7%AB%8B/" rel="prev" title="1-hexo建立">
+      <i class="fa fa-chevron-left"></i> 1-hexo建立
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/02/12/%E5%B0%87hexo%E7%A7%BB%E5%88%B0gitlab/" rel="next" title="將hexo移到gitlab">
+      將hexo移到gitlab <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-全域配置文件"><span class="nav-number">1.</span> <span class="nav-text">Hexo 全域配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#site"><span class="nav-number">1.1.</span> <span class="nav-text">site</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Directory"><span class="nav-number">1.2.</span> <span class="nav-text">Directory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Writing"><span class="nav-number">1.3.</span> <span class="nav-text">Writing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extensions"><span class="nav-number">1.4.</span> <span class="nav-text">Extensions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deployment"><span class="nav-number">1.5.</span> <span class="nav-text">Deployment</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">2.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#標籤外掛"><span class="nav-number">3.</span> <span class="nav-text">標籤外掛</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#參考資料"><span class="nav-number">3.1.</span> <span class="nav-text">參考資料</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">jimmy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/note/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/note/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/note/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jimmy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/note/lib/anime.min.js"></script>
+  <script src="/note/lib/velocity/velocity.min.js"></script>
+  <script src="/note/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/note/js/utils.js"></script>
+
+<script src="/note/js/motion.js"></script>
+
+
+<script src="/note/js/schemes/pisces.js"></script>
+
+
+<script src="/note/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

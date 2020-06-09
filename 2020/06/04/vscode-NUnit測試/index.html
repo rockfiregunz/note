@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/note/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/note/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/note/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/note/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/note/css/main.css">
+
+
+<link rel="stylesheet" href="/note/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://rockfiregunz.github.io/note').hostname,
+    root: '/note/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="最近在開始在練習 可測試的程式碼，於是就上網查看適用 c#的方式 目前採用的是 nunit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-NUnit測試">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/index.html">
+<meta property="og:site_name" content="jimmy&#39;s note">
+<meta property="og:description" content="最近在開始在練習 可測試的程式碼，於是就上網查看適用 c#的方式 目前採用的是 nunit">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/error1.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/result.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/result2.png">
+<meta property="og:image" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/result3.png">
+<meta property="article:published_time" content="2020-06-04T02:49:13.000Z">
+<meta property="article:modified_time" content="2020-06-04T07:43:02.079Z">
+<meta property="article:author" content="jimmy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/error1.png">
+
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>vscode-NUnit測試 | jimmy's note</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/note/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">jimmy's note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">jimmy's note</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/note/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/note/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/note/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/note/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/note/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/04/vscode-NUnit%E6%B8%AC%E8%A9%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vscode-NUnit測試
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-04 10:49:13" itemprop="dateCreated datePublished" datetime="2020-06-04T10:49:13+08:00">2020-06-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/vscode/" itemprop="url" rel="index">
+                    <span itemprop="name">vscode</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/vscode/nunit/" itemprop="url" rel="index">
+                    <span itemprop="name">nunit</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近在開始在練習 可測試的程式碼，於是就上網查看適用 c#的方式</p>
+<p>目前採用的是 nunit</p>
+<a id="more"></a>
+<h3 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h3><h4 id="建立專案及測試資料夾"><a href="#建立專案及測試資料夾" class="headerlink" title="建立專案及測試資料夾"></a>建立專案及測試資料夾</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dotnet new mvc -n nunitMVC         --  專案資料夾</span><br><span class="line">dotnet new nunit -n  nunitMVC.test    --  專案測試資料夾</span><br><span class="line"></span><br><span class="line">cd    nunitMVC         --  移動到專案底下</span><br><span class="line">--    安裝NUnit  </span><br><span class="line">dotnet add package NUnit --version 3.12.0 </span><br><span class="line"></span><br><span class="line">cd ..     --  回上層</span><br></pre></td></tr></table></figure>
+<p>  建立完成後，我就下指令<code>dotnet test nunitMVC.test</code> 來測試，結果出現這個錯誤。</p>
+<p>  <img src="error1.png" alt=""></p>
+<p> 因為我使用 vscode 來開發，比對一下 nunitMVC.csproj 及nunitMVC.test.csproj 兩個檔案</p>
+<p>nunitMVC.csproj </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Project Sdk=<span class="string">"Microsoft.NET.Sdk.Web"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;PropertyGroup&gt;</span><br><span class="line">    &lt;TargetFramework&gt;netcoreapp3<span class="number">.1</span>&lt;/TargetFramework&gt;</span><br><span class="line">&lt;/PropertyGroup&gt;</span><br><span class="line"></span><br><span class="line">&lt;ItemGroup&gt;</span><br><span class="line">    &lt;PackageReference Include=<span class="string">"NUnit"</span> Version=<span class="string">"3.12.0"</span> /&gt;</span><br><span class="line">&lt;/ItemGroup&gt;</span><br><span class="line">&lt;/Project&gt;</span><br></pre></td></tr></table></figure>
+
+<p>nunitMVC.test.csproj</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;Project Sdk=<span class="string">"Microsoft.NET.Sdk"</span>&gt;</span><br><span class="line"></span><br><span class="line">  &lt;PropertyGroup&gt;</span><br><span class="line">    <span class="comment">//將 net5.0   改成 netcoreapp3.1 </span></span><br><span class="line">    <span class="comment">//  個人 猜測  net5.0 可能 .framework 用法</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// &lt;TargetFramework&gt;net5.0&lt;/TargetFramework&gt;    </span></span><br><span class="line">    &lt;TargetFramework&gt;netcoreapp3<span class="number">.1</span>&lt;/TargetFramework&gt;</span><br><span class="line"></span><br><span class="line">    &lt;IsPackable&gt;<span class="literal">false</span>&lt;/IsPackable&gt;</span><br><span class="line">  &lt;/PropertyGroup&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ItemGroup&gt;</span><br><span class="line">    &lt;PackageReference Include=<span class="string">"NUnit"</span> Version=<span class="string">"3.12.0"</span> /&gt;</span><br><span class="line">    &lt;PackageReference Include=<span class="string">"NUnit3TestAdapter"</span> Version=<span class="string">"3.16.1"</span> /&gt;</span><br><span class="line">    &lt;PackageReference Include=<span class="string">"Microsoft.NET.Test.Sdk"</span> Version=<span class="string">"16.5.0"</span>/&gt;</span><br><span class="line">  &lt;/ItemGroup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/Project&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> dotnet add &lt;專案名稱&gt;(測試) reference &lt;被參考專案的 csproj 檔&gt;(開發)</span></span><br><span class="line">dotnet add nunitMVC.test reference nunitMVC\nunitMVC.csproj</span><br></pre></td></tr></table></figure>
+
+<p>開始執行測試<br>nunitMVC\HomeController.cs</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Mvc;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Extensions.Logging;</span><br><span class="line"><span class="keyword">using</span> nunitMVC.Models;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">nunitMVC.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HomeController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;HomeController&gt; _logger;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//_logger = logger;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> View();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Privacy</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> View();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Error</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> View(<span class="keyword">new</span> ErrorViewModel &#123; RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetEmployeeName</span>(<span class="params"><span class="keyword">int</span> empId</span>)  </span></span><br><span class="line"><span class="function"></span>        &#123;  </span><br><span class="line">            <span class="keyword">string</span> name;  </span><br><span class="line">            <span class="keyword">if</span> (empId == <span class="number">1</span>)  </span><br><span class="line">            &#123;  </span><br><span class="line">                name = <span class="string">"Jignesh"</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (empId == <span class="number">2</span>)  </span><br><span class="line">            &#123;  </span><br><span class="line">                name = <span class="string">"Rakesh"</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">            &#123;  </span><br><span class="line">                name = <span class="string">"Not Found"</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">return</span> name;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>nunitMVC.test\UnitTest1.cs</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> NUnit.Framework;</span><br><span class="line"><span class="keyword">using</span> nunitMVC.Controllers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">nunitMVC.test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Tests</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">SetUp</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Setup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        [<span class="meta">Test</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//success</span></span><br><span class="line">            HomeController home = <span class="keyword">new</span> HomeController();</span><br><span class="line">            <span class="keyword">string</span> result = home.GetEmployeeName(<span class="number">1</span>);  </span><br><span class="line">            Assert.AreEqual(<span class="string">"Jignesh"</span>, result);  </span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        [<span class="meta">Test</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="comment">//  fails</span></span><br><span class="line">            HomeController home = <span class="keyword">new</span> HomeController();</span><br><span class="line">            <span class="keyword">string</span> result = home.GetEmployeeName(<span class="number">2</span>);  </span><br><span class="line">            Assert.AreEqual(<span class="string">"Jignesh"</span>, result);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>結果<br><img src="result.png" alt=""></p>
+<h4 id="加入-NSubstitute"><a href="#加入-NSubstitute" class="headerlink" title="加入 NSubstitute"></a>加入 NSubstitute</h4><p>目前尚未研究 Mock Framework，但 John Wu 大大有加入，我也嘗試加入。</p>
+<p><code>dotnet add MyWebsite.Tests package NSubstitute</code></p>
+<h4 id="安裝-NET-Core-Test-Explorer"><a href="#安裝-NET-Core-Test-Explorer" class="headerlink" title="安裝 .NET Core Test Explorer"></a>安裝 .NET Core Test Explorer</h4><p>安裝完成後，到資料底下</p>
+<p>.vscode/settings.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"dotnet-test-explorer.testProjectPath"</span>: <span class="string">"nunitMVC.Tests"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我想說會自動載入測試的 class及 function，後來才發現要自己按。</p>
+<p>＊ 不知道哪邊出錯，要再研究才行</p>
+<p><img src="result2.png" alt=""></p>
+<p>結果</p>
+<p><img src="result3.png" alt=""></p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://blog.johnwu.cc/article/ironman-day25-asp-net-core-unit-test-nunit.html" target="_blank" rel="noopener">ASP.NET Core 2 系列 - 單元測試 (NUnit)</a></p>
+<p><a href="https://www.c-sharpcorner.com/article/unit-test-in-net-core-application-using-mstest/" target="_blank" rel="noopener">Unit Test In .NET Core Application Using MSTest</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/06/03/Ruby-s-yaml-in-php/" rel="prev" title="Ruby's yaml in php">
+      <i class="fa fa-chevron-left"></i> Ruby's yaml in php
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/06/04/PHP-php-unit%E6%B8%AC%E8%A9%A6/" rel="next" title="PHP-php unit測試">
+      PHP-php unit測試 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#開始"><span class="nav-number">1.</span> <span class="nav-text">開始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#建立專案及測試資料夾"><span class="nav-number">1.1.</span> <span class="nav-text">建立專案及測試資料夾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加入-NSubstitute"><span class="nav-number">1.2.</span> <span class="nav-text">加入 NSubstitute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安裝-NET-Core-Test-Explorer"><span class="nav-number">1.3.</span> <span class="nav-text">安裝 .NET Core Test Explorer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">jimmy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/note/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/note/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/note/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jimmy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/note/lib/anime.min.js"></script>
+  <script src="/note/lib/velocity/velocity.min.js"></script>
+  <script src="/note/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/note/js/utils.js"></script>
+
+<script src="/note/js/motion.js"></script>
+
+
+<script src="/note/js/schemes/pisces.js"></script>
+
+
+<script src="/note/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

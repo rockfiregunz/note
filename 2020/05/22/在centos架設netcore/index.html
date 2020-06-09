@@ -46,19 +46,19 @@
   };
 </script>
 
-  <meta name="description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="jimmy">
-<meta property="og:url" content="https://rockfiregunz.github.io/note/about/index.html">
+  <meta name="description" content="在centos運行net core的方法差不多，個人文章 vscode-如何在ubuntu發佈 這邊主要介紹 差異性及問題。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 centos 架站 net core ">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
-<meta property="og:description" content="只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。">
+<meta property="og:description" content="在centos運行net core的方法差不多，個人文章 vscode-如何在ubuntu發佈 這邊主要介紹 差異性及問題。">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-02-11T02:14:11.000Z">
-<meta property="article:modified_time" content="2020-02-11T02:23:34.504Z">
+<meta property="article:published_time" content="2020-05-22T01:26:33.000Z">
+<meta property="article:modified_time" content="2020-05-22T05:20:43.443Z">
 <meta property="article:author" content="jimmy">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/note/about/">
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/">
 
 
 <script id="page-configurations">
@@ -66,12 +66,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>jimmy | jimmy's note
-  </title>
+  <title>在 centos 架站 net core  | jimmy's note</title>
   
 
 
@@ -177,45 +176,116 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-TW">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在 centos 架站 net core 
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">jimmy
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
 
-<div class="post-meta">
+              <time title="創建時間：2020-05-22 09:26:33" itemprop="dateCreated datePublished" datetime="2020-05-22T09:26:33+08:00">2020-05-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在centos運行net core的方法差不多，個人文章 <a href="http://localhost:4000/note/2020/04/10/vscode-%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu%E7%99%BC%E4%BD%88/" target="_blank" rel="noopener">vscode-如何在ubuntu發佈</a></p>
+<p>這邊主要介紹 差異性及問題。</p>
+<a id="more"></a>
+
+<p>不多說，先上 大神的文章 <a href="https://blog.darkthread.net/blog/aspnetcore-with-nginx/" target="_blank" rel="noopener">ASP.NET Core + Nginx on CentOS 安裝筆記</a></p>
+<p>在這邊我也遇到 黑神大的 502錯誤，及 www-data 的權限問題</p>
+<ol>
+<li><p>解決 www-data 權限<br>依照黑暗大的解法，建立 www-data群組及帳號，再將自己的帳號加到www-data</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd www-data</span><br><span class="line">sudo useradd -g www-data www-data</span><br><span class="line">sudo usermod -a -G www-data 自己的帳號</span><br><span class="line">sudo chmod g+w -R &#x2F;var&#x2F;www&#x2F;發佈的目錄</span><br></pre></td></tr></table></figure></li>
+<li><p>502 Bad Gateway 錯誤<br>從黑暗大文章來看，得知是 SELinux 問題，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo setsebool -P httpd_can_network_connect on</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;  這個是設定連線到DataBase</span><br><span class="line">sudo setsebool -P httpd_can_network_connect_db on</span><br></pre></td></tr></table></figure>
+<p>這邊設定完成後，還是一樣出現502 Bad Gateway，發現我連線網址都是被導向5001 port(即 https ://dns:50001)，所以我去修改 /etc/nginx/conf.d/XXX.conf</p>
+<p>將 <code>http ://localhost:5000</code> 改成 <code>https ://localhost:5001</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server </span><br><span class="line">&#123;</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">      #proxy_pass   http :&#x2F;&#x2F;localhost:5000;</span><br><span class="line">      proxy_pass    https  :&#x2F;&#x2F;localhost:5001;</span><br><span class="line">      ...略</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<pre><code>這樣就可以執行了
+
+不知道是不是 我先採用certbot的關係，將原本的 80 port都轉成433port的原因。</code></pre><ol start="3">
+<li>小訣竅<br>以服務方式執行 ASP.NET Core 看不到主控台顯示的錯誤訊息，可改用<code>sudo journalctl -fu kestrel-darkblog.service</code>查看。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/note/2020/05/19/%E8%87%A8%E6%99%82%E7%B4%80%E9%8C%84/" rel="prev" title="臨時紀錄">
+      <i class="fa fa-chevron-left"></i> 臨時紀錄
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/note/2020/06/03/Ruby-s-yaml-in-php/" rel="next" title="Ruby's yaml in php">
+      Ruby's yaml in php <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <p>只是隨手筆記，想把學到東西給記錄下來，怕之後忘記。</p>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
