@@ -46,17 +46,19 @@
   };
 </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="MSSQL-MERGE">
-<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/06/08/MSSQL-MERGE/index.html">
+  <meta name="description" content="使用linq 或是 EF 的時候，常常看文章會使用 IEnumerable、IQueryable當初看的時候，覺得應該是差不多東西。但後來還是想要看一下有何差異性，先紀錄一下。 IEnumerable與IQueryableIQueryable: 處理遠端來源的資料 ex. Database &#x2F; Service等到要使用資料才會轉成語法，，取出符合條件的 IEnumerable: 處理記憶體內的資料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode-學習之路-IEnumerable與IQueryable">
+<meta property="og:url" content="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-IEnumerable%E8%88%87IQueryable/index.html">
 <meta property="og:site_name" content="jimmy&#39;s note">
+<meta property="og:description" content="使用linq 或是 EF 的時候，常常看文章會使用 IEnumerable、IQueryable當初看的時候，覺得應該是差不多東西。但後來還是想要看一下有何差異性，先紀錄一下。 IEnumerable與IQueryableIQueryable: 處理遠端來源的資料 ex. Database &#x2F; Service等到要使用資料才會轉成語法，，取出符合條件的 IEnumerable: 處理記憶體內的資料">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-06-08T06:00:03.000Z">
-<meta property="article:modified_time" content="2020-06-08T06:00:03.323Z">
+<meta property="article:published_time" content="2020-07-03T06:58:09.000Z">
+<meta property="article:modified_time" content="2020-07-15T07:57:56.097Z">
 <meta property="article:author" content="jimmy">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/06/08/MSSQL-MERGE/">
+<link rel="canonical" href="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-IEnumerable%E8%88%87IQueryable/">
 
 
 <script id="page-configurations">
@@ -68,7 +70,7 @@
   };
 </script>
 
-  <title>MSSQL-MERGE | jimmy's note</title>
+  <title>vscode-學習之路-IEnumerable與IQueryable | jimmy's note</title>
   
 
 
@@ -183,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/08/MSSQL-MERGE/">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-IEnumerable%E8%88%87IQueryable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/note/images/avatar.gif">
@@ -196,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          MSSQL-MERGE
+          vscode-學習之路-IEnumerable與IQueryable
         </h1>
 
         <div class="post-meta">
@@ -206,7 +208,24 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-06-08 14:00:03" itemprop="dateCreated datePublished" datetime="2020-06-08T14:00:03+08:00">2020-06-08</time>
+              <time title="創建時間：2020-07-03 14:58:09" itemprop="dateCreated datePublished" datetime="2020-07-03T14:58:09+08:00">2020-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/IEnumerable/" itemprop="url" rel="index">
+                    <span itemprop="name">IEnumerable</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/IEnumerable/IQueryable/" itemprop="url" rel="index">
+                    <span itemprop="name">IQueryable</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -220,7 +239,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>使用linq 或是 EF 的時候，常常看文章會使用 IEnumerable、IQueryable<br>當初看的時候，覺得應該是差不多東西。<br>但後來還是想要看一下有何差異性，先紀錄一下。</p>
+<h3 id="IEnumerable與IQueryable"><a href="#IEnumerable與IQueryable" class="headerlink" title="IEnumerable與IQueryable"></a>IEnumerable與IQueryable</h3><p>IQueryable: 處理遠端來源的資料 ex. Database / Service<br>等到要使用資料才會轉成語法，，取出符合條件的</p>
+<p>IEnumerable: 處理記憶體內的資料 ex. List / Array<br>先取出資料，在比較符合條件，因此資料量多的時候，可能會有問題產生<br>資料量有10萬筆，先將10萬筆找出來丟到記憶體，再去拿取需要的5筆資料</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://dotblogs.azurewebsites.net/kevin_date/2017/09/20/104713" target="_blank" rel="noopener">IEnumerable vs IQueryable - 差異</a><br><a href="http://enjoy01coding.blogspot.com/2017/12/entity-framework-ienumerableiqueryable.html" target="_blank" rel="noopener">Entity Framework IEnumerable與IQueryable差異比較</a><br><a href="https://dotblogs.com.tw/UgiYo/2019/08/10/001704" target="_blank" rel="noopener">[筆記] IEnumerable v.s IQueryable</a></p>
+
     </div>
 
     
@@ -235,13 +258,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/note/2020/06/08/PHP-php-ini/" rel="prev" title="PHP-php.ini">
-      <i class="fa fa-chevron-left"></i> PHP-php.ini
+    <a href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-GenericRepository-%E5%BB%BA%E7%AB%8B/" rel="prev" title="vscode-學習之路-GenericRepository 建立">
+      <i class="fa fa-chevron-left"></i> vscode-學習之路-GenericRepository 建立
     </a></div>
-      <div class="post-nav-item">
-    <a href="/note/2020/06/08/%E8%BA%AB%E5%88%86%E8%AD%89%E3%80%81%E5%B1%85%E7%95%99%E8%AD%89%E3%80%81%E8%AD%B7%E7%85%A7-%E8%A6%8F%E5%89%87/" rel="next" title="身分證、居留證、護照 規則">
-      身分證、居留證、護照 規則 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -301,6 +321,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IEnumerable與IQueryable"><span class="nav-number">1.</span> <span class="nav-text">IEnumerable與IQueryable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#參考資料"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -314,20 +335,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/note/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/note/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/note/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

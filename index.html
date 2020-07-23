@@ -181,6 +181,322 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-IEnumerable%E8%88%87IQueryable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-IEnumerable%E8%88%87IQueryable/" class="post-title-link" itemprop="url">vscode-學習之路-IEnumerable與IQueryable</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-03 14:58:09" itemprop="dateCreated datePublished" datetime="2020-07-03T14:58:09+08:00">2020-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/IEnumerable/" itemprop="url" rel="index">
+                    <span itemprop="name">IEnumerable</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/IEnumerable/IQueryable/" itemprop="url" rel="index">
+                    <span itemprop="name">IQueryable</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用linq 或是 EF 的時候，常常看文章會使用 IEnumerable、IQueryable<br>當初看的時候，覺得應該是差不多東西。<br>但後來還是想要看一下有何差異性，先紀錄一下。</p>
+<h3 id="IEnumerable與IQueryable"><a href="#IEnumerable與IQueryable" class="headerlink" title="IEnumerable與IQueryable"></a>IEnumerable與IQueryable</h3><p>IQueryable: 處理遠端來源的資料 ex. Database / Service<br>等到要使用資料才會轉成語法，，取出符合條件的</p>
+<p>IEnumerable: 處理記憶體內的資料 ex. List / Array<br>先取出資料，在比較符合條件，因此資料量多的時候，可能會有問題產生<br>資料量有10萬筆，先將10萬筆找出來丟到記憶體，再去拿取需要的5筆資料</p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://dotblogs.azurewebsites.net/kevin_date/2017/09/20/104713" target="_blank" rel="noopener">IEnumerable vs IQueryable - 差異</a><br><a href="http://enjoy01coding.blogspot.com/2017/12/entity-framework-ienumerableiqueryable.html" target="_blank" rel="noopener">Entity Framework IEnumerable與IQueryable差異比較</a><br><a href="https://dotblogs.com.tw/UgiYo/2019/08/10/001704" target="_blank" rel="noopener">[筆記] IEnumerable v.s IQueryable</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-GenericRepository-%E5%BB%BA%E7%AB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-GenericRepository-%E5%BB%BA%E7%AB%8B/" class="post-title-link" itemprop="url">vscode-學習之路-GenericRepository 建立</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-03 11:50:45" itemprop="dateCreated datePublished" datetime="2020-07-03T11:50:45+08:00">2020-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/Repository/" itemprop="url" rel="index">
+                    <span itemprop="name">Repository</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/Repository/GenericRepository/" itemprop="url" rel="index">
+                    <span itemprop="name">GenericRepository</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>因為 ModelRepository  會有許多的相似的功能，所以為了程式碼簡潔與維護，將相同部份抽出來。<br>ModelRepository 等於一張Table</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-GenericRepository-%E5%BB%BA%E7%AB%8B/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-Repository%E5%BB%BA%E7%AB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-Repository%E5%BB%BA%E7%AB%8B/" class="post-title-link" itemprop="url">vscode-學習之路-Repository建立</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-03 11:49:30" itemprop="dateCreated datePublished" datetime="2020-07-03T11:49:30+08:00">2020-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/Repository/" itemprop="url" rel="index">
+                    <span itemprop="name">Repository</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看了許多文章，Repository 是否要使用有許多爭議。</p>
+<p>因為要學習的關係，還是需要練習。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/note/2020/07/03/vscode-%E5%AD%B8%E7%BF%92%E4%B9%8B%E8%B7%AF-Repository%E5%BB%BA%E7%AB%8B/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/19/Linq%E5%AD%B8%E7%BF%92-select/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/note/images/avatar.gif">
+      <meta itemprop="name" content="jimmy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jimmy's note">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/note/2020/06/19/Linq%E5%AD%B8%E7%BF%92-select/" class="post-title-link" itemprop="url">Linq學習</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-19 14:52:27" itemprop="dateCreated datePublished" datetime="2020-06-19T14:52:27+08:00">2020-06-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/linq/" itemprop="url" rel="index">
+                    <span itemprop="name">linq</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Linq 介紹就看這邊 <a href="https://ithelp.ithome.com.tw/articles/10194251" target="_blank" rel="noopener">所以什麼是LINQ?</a></p>
+<p>這邊只記錄自己的練習及理解</p>
+<p>練習環境: <a href="https://www.linqpad.net/" target="_blank" rel="noopener">linqpad</a><br>資料庫  : linq本身提供的 </p>
+<p>※ linq 的 join 都是 inner join</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/note/2020/06/19/Linq%E5%AD%B8%E7%BF%92-select/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/08/PHP-Filters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -333,120 +649,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/08/%E8%BA%AB%E5%88%86%E8%AD%89%E3%80%81%E5%B1%85%E7%95%99%E8%AD%89%E3%80%81%E8%AD%B7%E7%85%A7-%E8%A6%8F%E5%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/note/images/avatar.gif">
-      <meta itemprop="name" content="jimmy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jimmy's note">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/note/2020/06/08/%E8%BA%AB%E5%88%86%E8%AD%89%E3%80%81%E5%B1%85%E7%95%99%E8%AD%89%E3%80%81%E8%AD%B7%E7%85%A7-%E8%A6%8F%E5%89%87/" class="post-title-link" itemprop="url">身分證、居留證、護照 規則</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-06-08 14:02:19" itemprop="dateCreated datePublished" datetime="2020-06-08T14:02:19+08:00">2020-06-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/06/08/MSSQL-MERGE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/note/images/avatar.gif">
-      <meta itemprop="name" content="jimmy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jimmy's note">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/note/2020/06/08/MSSQL-MERGE/" class="post-title-link" itemprop="url">MSSQL-MERGE</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-06-08 14:00:03" itemprop="dateCreated datePublished" datetime="2020-06-08T14:00:03+08:00">2020-06-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -797,150 +999,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/note/images/avatar.gif">
-      <meta itemprop="name" content="jimmy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jimmy's note">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/" class="post-title-link" itemprop="url">在 centos 架站 net core </a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-05-22 09:26:33" itemprop="dateCreated datePublished" datetime="2020-05-22T09:26:33+08:00">2020-05-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/note/categories/centos/" itemprop="url" rel="index">
-                    <span itemprop="name">centos</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在centos運行net core的方法差不多，個人文章 <a href="http://localhost:4000/note/2020/04/10/vscode-%E5%A6%82%E4%BD%95%E5%9C%A8ubuntu%E7%99%BC%E4%BD%88/" target="_blank" rel="noopener">vscode-如何在ubuntu發佈</a></p>
-<p>這邊主要介紹 差異性及問題。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/note/2020/05/22/%E5%9C%A8centos%E6%9E%B6%E8%A8%ADnetcore/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://rockfiregunz.github.io/note/2020/05/19/%E8%87%A8%E6%99%82%E7%B4%80%E9%8C%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/note/images/avatar.gif">
-      <meta itemprop="name" content="jimmy">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jimmy's note">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/note/2020/05/19/%E8%87%A8%E6%99%82%E7%B4%80%E9%8C%84/" class="post-title-link" itemprop="url">臨時紀錄</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-05-19 16:14:51" itemprop="dateCreated datePublished" datetime="2020-05-19T16:14:51+08:00">2020-05-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>有些文件資料尚未想到或是撰寫，就先放這邊</p>
-<h3 id="cenos-利用-certbot-來取得-SSL-憑證"><a href="#cenos-利用-certbot-來取得-SSL-憑證" class="headerlink" title="cenos 利用 certbot 來取得 SSL 憑證"></a>cenos 利用 certbot 來取得 SSL 憑證</h3><p><a href="https://www.tecmint.com/secure-nginx-with-lets-encrypt-on-centos-8/" target="_blank" rel="noopener">How to Secure Nginx with Let’s Encrypt on CentOS 8</a></p>
-<p><a href="https://www.ichiayi.com/wiki/tech/ssl_letsencrypt" target="_blank" rel="noopener">申請設定 Let’s Encrypt 免費 SSL 憑證</a></p>
-<h3 id="net-core-MVC-c-預覽-chtml-異動"><a href="#net-core-MVC-c-預覽-chtml-異動" class="headerlink" title=".net core MVC(c#) 預覽 chtml 異動"></a>.net core MVC(c#) 預覽 chtml 異動</h3><p><a href="https://blog.darkthread.net/blog/razor-runtime-compilation/" target="_blank" rel="noopener">讓 ASP.NET Core 也能改完 cshtml 立即看結果</a><br><a href="https://stackoverflow.com/questions/54106058/why-does-page-not-update-after-refresh-when-cshtml-changes" target="_blank" rel="noopener">why does page not update after refresh when .cshtml changes</a></p>
-<h3 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h3><p><a href="https://medium.com/enjoy-life-enjoy-coding/heroku-%E6%90%AD%E9%85%8D-git-%E5%9C%A8-heroku-%E4%B8%8A%E9%83%A8%E7%BD%B2%E7%B6%B2%E7%AB%99%E7%9A%84%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8-bf4fd6f998b8" target="_blank" rel="noopener">Heroku | 搭配 Git 在 Heroku 上部署網站的手把手教學</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/2/">2</a><a class="page-number" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/3/">3</a><a class="extend next" rel="next" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/4/">4</a><a class="extend next" rel="next" href="pagehttps://rockfiregunz.github.io/aa/2020/03/05/Vue-%E5%AF%A6%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F/#more/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1006,20 +1069,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/note/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/note/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/note/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

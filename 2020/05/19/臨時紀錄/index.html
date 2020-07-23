@@ -54,7 +54,7 @@
 <meta property="og:description" content="有些文件資料尚未想到或是撰寫，就先放這邊 cenos 利用 certbot 來取得 SSL 憑證How to Secure Nginx with Let’s Encrypt on CentOS 8 申請設定 Let’s Encrypt 免費 SSL 憑證 .net core MVC(c#) 預覽 chtml 異動讓 ASP.NET Core 也能改完 cshtml 立即看結果why does pa">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-05-19T08:14:51.000Z">
-<meta property="article:modified_time" content="2020-05-29T08:45:34.527Z">
+<meta property="article:modified_time" content="2020-07-13T03:01:31.845Z">
 <meta property="article:author" content="jimmy">
 <meta name="twitter:card" content="summary">
 
@@ -227,7 +227,19 @@
 <p><a href="https://www.ichiayi.com/wiki/tech/ssl_letsencrypt" target="_blank" rel="noopener">申請設定 Let’s Encrypt 免費 SSL 憑證</a></p>
 <h3 id="net-core-MVC-c-預覽-chtml-異動"><a href="#net-core-MVC-c-預覽-chtml-異動" class="headerlink" title=".net core MVC(c#) 預覽 chtml 異動"></a>.net core MVC(c#) 預覽 chtml 異動</h3><p><a href="https://blog.darkthread.net/blog/razor-runtime-compilation/" target="_blank" rel="noopener">讓 ASP.NET Core 也能改完 cshtml 立即看結果</a><br><a href="https://stackoverflow.com/questions/54106058/why-does-page-not-update-after-refresh-when-cshtml-changes" target="_blank" rel="noopener">why does page not update after refresh when .cshtml changes</a></p>
 <h3 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h3><p><a href="https://medium.com/enjoy-life-enjoy-coding/heroku-%E6%90%AD%E9%85%8D-git-%E5%9C%A8-heroku-%E4%B8%8A%E9%83%A8%E7%BD%B2%E7%B6%B2%E7%AB%99%E7%9A%84%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%B8-bf4fd6f998b8" target="_blank" rel="noopener">Heroku | 搭配 Git 在 Heroku 上部署網站的手把手教學</a></p>
+<h3 id="c"><a href="#c" class="headerlink" title="c#"></a>c#</h3><h4 id="using"><a href="#using" class="headerlink" title="using"></a>using</h4><p>using語句，定義一個範圍，在範圍結束時處理物件。<br>場景：<br>當在某個程式碼段中使用了類的例項，而希望無論因為什麼原因，<br>只要離開了這個程式碼段就自動呼叫這個類例項的Dispose。</p>
+<p>類似 try,finally，但不包含catch</p>
+<p><a href="https://blog.miniasp.com/post/2009/10/12/About-CSharp-using-Statement-misunderstanding-on-try-catch-finally" target="_blank" rel="noopener">關於 C# 的 using 陳述式在實務應用上的基本觀念</a></p>
+<p><a href="https://www.itread01.com/content/1522267094.html" target="_blank" rel="noopener">C# using 的用法</a></p>
+<h4 id="使用-SQL-語法"><a href="#使用-SQL-語法" class="headerlink" title="使用 SQL 語法"></a>使用 SQL 語法</h4><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Data.SqlClient;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line">測試 直接寫 SQL 語法</span><br><span class="line"><span class="keyword">using</span> ( SqlConnection connection = <span class="keyword">new</span> SqlConnection( <span class="string">"連線字串"</span> ) ) </span><br><span class="line">&#123;</span><br><span class="line">    connection.Open( );</span><br><span class="line"></span><br><span class="line">    SqlCommand command =  <span class="keyword">new</span> SqlCommand( $<span class="string">"SELECT * from dbo.product"</span> , connection );</span><br><span class="line">    <span class="keyword">using</span> (SqlDataReader reader = command.ExecuteReader())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (reader.Read())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">Console</span>.WriteLine(<span class="string">"&#123;0&#125; &#123;1&#125;"</span>, reader.GetInt32(<span class="number">0</span>), reader.GetString(<span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    connection.Close();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h4><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (TransactionScope tx = <span class="keyword">new</span> TransactionScope())</span><br><span class="line">&#123;</span><br><span class="line">    Model m   = context.Model.Single(x =&gt; x.id == <span class="number">2</span>);</span><br><span class="line">    m.Name=<span class="string">"bbbbbbb"</span>;</span><br><span class="line">    context.SaveChanges();</span><br><span class="line">    <span class="comment">//tx.Complete();    </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Expression-lt-Func-lt-Model-bool-gt-gt-expression"><a href="#Expression-lt-Func-lt-Model-bool-gt-gt-expression" class="headerlink" title="Expression&lt;Func&lt;Model, bool&gt;&gt; expression"></a>Expression&lt;Func&lt;Model, bool&gt;&gt; expression</h4><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var m1   =  <span class="keyword">this</span>.Find(x =&gt; <span class="built_in">string</span>.IsNullOrEmpty(<span class="string">"a"</span>) || x.Name==<span class="string">"A"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> IEnumerable&lt;Model&gt; <span class="title">Find</span><span class="params">(Expression&lt;Func&lt;Model, <span class="keyword">bool</span>&gt;&gt; expression)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span>  context.Model.Where(expression);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="sp-amp-amp-function"><a href="#sp-amp-amp-function" class="headerlink" title="sp &amp;&amp; function"></a>sp &amp;&amp; function</h4><figure class="highlight c"><figcaption><span>sharp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  執行SQL 語法            </span></span><br><span class="line">  <span class="comment">//  使用 SP         須注意 欄位對應問題(class 的欄位變數一定要有)</span></span><br><span class="line">  var c   =    _context.Model.FromSqlRaw(<span class="string">"EXECUTE  [sp1] ''"</span>).ToList();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//  使用 function   須注意 欄位對應問題(class 的欄位變數一定要有)</span></span><br><span class="line">  var d   =    _context.Model.FromSqlRaw(<span class="string">"SELECT * FROM [function1] ()"</span>).ToList();</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4>
     </div>
 
     
@@ -308,7 +320,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cenos-利用-certbot-來取得-SSL-憑證"><span class="nav-number">1.</span> <span class="nav-text">cenos 利用 certbot 來取得 SSL 憑證</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-core-MVC-c-預覽-chtml-異動"><span class="nav-number">2.</span> <span class="nav-text">.net core MVC(c#) 預覽 chtml 異動</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heroku"><span class="nav-number">3.</span> <span class="nav-text">Heroku</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cenos-利用-certbot-來取得-SSL-憑證"><span class="nav-number">1.</span> <span class="nav-text">cenos 利用 certbot 來取得 SSL 憑證</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net-core-MVC-c-預覽-chtml-異動"><span class="nav-number">2.</span> <span class="nav-text">.net core MVC(c#) 預覽 chtml 異動</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heroku"><span class="nav-number">3.</span> <span class="nav-text">Heroku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c"><span class="nav-number">4.</span> <span class="nav-text">c#</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#using"><span class="nav-number">4.1.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-SQL-語法"><span class="nav-number">4.2.</span> <span class="nav-text">使用 SQL 語法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transaction"><span class="nav-number">4.3.</span> <span class="nav-text">Transaction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expression-lt-Func-lt-Model-bool-gt-gt-expression"><span class="nav-number">4.4.</span> <span class="nav-text">Expression&lt;Func&lt;Model, bool&gt;&gt; expression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sp-amp-amp-function"><span class="nav-number">4.5.</span> <span class="nav-text">sp &amp;&amp; function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">4.6.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -322,20 +334,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/note/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/note/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/note/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
