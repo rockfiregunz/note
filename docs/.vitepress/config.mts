@@ -1,9 +1,15 @@
 import { defineConfig } from 'vitepress'
+
  
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "jimmy'note",
   description: "jimmy note",
+  srcExclude: ['**/drafts/**'],
+  //srcDir: 'pages',
+  rewrites: {
+        'pages/(.*)': '(.*)'
+  },
   base: '/note/',
   themeConfig: {
     nav: [
@@ -41,7 +47,7 @@ export default defineConfig({
   
     sidebar: {
       '/':[],
-      '/pages/vite/': [
+      '/pages/vue/vite/': [
           {
             text: 'vite',
             collapsed: true,
@@ -51,7 +57,7 @@ export default defineConfig({
             ]
         }
       ],
-      '/pages/vite/vitepress/': [
+      '/pages/vue/vite/vitepress/': [
           {
             text: 'vitepress',
             collapsed: true,
