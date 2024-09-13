@@ -12,6 +12,8 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
-  }
+ 
+    //// 註冊全局組件
+    //app.component('CustomSidebar', require('./components/CustomSidebar.vue').default)
+  },
 } satisfies Theme
