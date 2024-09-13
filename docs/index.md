@@ -13,6 +13,15 @@ hero:
     - theme: alt
       text: API Examples
       link: /api-examples
+    - theme: alt
+      text: vite
+      link: /pages/vite/index
+    - theme: alt
+      text: vite -> vitepress
+      link: /pages/vite/vitepress/index
+    - theme: alt
+      text: pages draft
+      link: /pages/drafts/draft
 
 features:
   - title: Feature A

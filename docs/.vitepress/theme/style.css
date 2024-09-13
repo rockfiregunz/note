@@ -137,3 +137,10 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+.nav-separator {
+  border-right: 1px solid #ccc;
+  height: 24px;
+  margin: 0 12px;
+  display: inline-block;
+  vertical-align: middle;
+}
