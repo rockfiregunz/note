@@ -4,6 +4,11 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "jimmy'note",
   description: "jimmy note",
+  srcExclude: ['**/drafts/**'], // 排除目錄
+  //srcDir: 'pages', // 設定根目錄
+  rewrites: {
+    'pages/(.*)': '(.*)'
+  },
   base: '/note/',
   themeConfig: {
     nav: [
@@ -41,7 +46,7 @@ export default defineConfig({
   
     sidebar: {
       '/':[],
-      '/pages/vite/': [
+      '/pages/vue/vite/': [
           {
             text: 'vite',
             collapsed: true,
@@ -51,7 +56,7 @@ export default defineConfig({
             ]
         }
       ],
-      '/pages/vite/vitepress/': [
+      '/pages/vue/vite/vitepress/': [
           {
             text: 'vitepress',
             collapsed: true,
