@@ -5,10 +5,10 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "jimmy'note",
   description: "jimmy note",
-  srcExclude: ['**/drafts/**'],
-  //srcDir: 'pages',
+  srcExclude: ['**/drafts/**'], // 排除目錄
+  //srcDir: 'pages', // 設定根目錄
   rewrites: {
-        'pages/(.*)': '(.*)'
+    'pages/(.*)': '(.*)'
   },
   base: '/note/',
   themeConfig: {
